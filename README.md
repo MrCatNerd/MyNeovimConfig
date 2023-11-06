@@ -1,5 +1,8 @@
 # requirements:
 discalimer: this readme.md file is trash
+disclaimer: some of the optimizations were shamelessly stolen from nvchad
+disclaimer: this config isnt test in linux
+disclaimer: there are too many disclaimers here
 
 ```sh
 git clone https://github.com/MrCatNerd/MyNeovimConfig/
