@@ -1,5 +1,6 @@
--- line numbers
+-- formatting events moved to formatter.nvim files
 
+-- line numbers
 vim.api.nvim_create_autocmd({ "InsertEnter" }, {
     callback = function()
         vim.opt.nu = false

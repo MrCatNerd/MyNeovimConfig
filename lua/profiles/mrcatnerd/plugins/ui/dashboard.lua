@@ -13,6 +13,17 @@ return {
                 week_header = {
                     enable = true, --boolean use a week header
                 },
+                footer = {         -- shamelessly stolen from: https://github.com/ErickKramer/neovim_config/blob/main/.config/nvim/lua/plugins/configs/alpha.lua
+                    "⢦⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⡤",
+                    "⠘⣿⣿⣿⣷⣦⣄⣀⠀⢠⠔⠀⢀⡼⠿⠿⢆⠀⠀⠲⣄⠀⣀⣠⣴⣾⣿⣿⣿⠇",
+                    "⠀⠈⠉⠉⠛⠛⠻⠿⢿⣿⠀⢀⣾⣷⡀⢀⣾⣷⡀⠀⣿⡿⠿⠿⠛⠛⠉⠉⠁⠀",
+                    "⠀⠀⣤⣤⣶⣶⣶⣶⣶⣿⣆⠈⠉⠉⠉⠉⠉⠉⠉⢠⣿⣶⣶⣶⣶⣶⣤⣤⠀⠀",
+                    "⠀⠀⠘⣿⡿⠟⠛⠉⣡⣿⣿⣷⣤⠀⢠⣆⠀⣤⣶⣿⣿⣬⡉⠛⠻⠿⣿⠇⠀⠀",
+                    "⠀⠀⠀⠀⠀⢀⣴⣿⡿⢋⣿⣿⠛⢠⣿⣿⡄⠛⢿⣿⡘⢿⣿⣦⣀⠀⠀⠀⠀⠀",
+                    "⠀⠀⠀⠀⠀⠉⠻⠏⠀⣸⣿⡇⢀⠻⣿⣿⠟⣀⠸⣿⣇⠀⠙⠟⠋⠀⠀⠀⠀⠀",
+                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢠⡟⠁⣿⣿⠀⠻⣆⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+                    "⠀⠀⠀⠀⠀⠀⠀⠀⠘⢟⠉⠙⠓⠀⠘⠏⠀⠘⠟⠉⡻⠋⠀⠀⠀⠀⠀⠀⠀⠀",
+                },
                 center = {
                     {
                         icon = " ",
@@ -33,6 +44,16 @@ return {
                         key_hl = "Number",
                         -- key_format = " %s", -- remove default surrounding `[]`
                         action = "lua require('persistence').load()",
+                    },
+                    {
+                        icon = " ",
+                        icon_hl = "Title",
+                        desc = "New File",
+                        desc_hl = "String",
+                        key = "n",
+                        key_hl = "Number",
+                        -- key_format = " %s", -- remove default surrounding `[]`
+                        action = ":silent ene",
                     },
                     {
                         icon = "󰂠 ",

@@ -1,6 +1,6 @@
 local M = {}
 
-M.load_mappings = function(section) -- TOOD: meow
+M.load_mappings = function(section) -- TOOD: mapping thingy
     section = section or nil
 
     assert(section ~= nil, "you did not inserted section")
@@ -22,7 +22,9 @@ M.lazy_load = function(plugin)
         group = vim.api.nvim_create_augroup("BeLazyOnFileOpen" .. plugin, {}),
         callback = function()
             local file = vim.fn.expand "%"
-            local condition = file ~= "netrw" and "NvimTree_1" and file ~= "[lazy]" and file ~= "" -- idk why i left NvimTree there
+            local condition = file ~= "netrw" and "NvimTree_1" and file ~= "[lazy]" and
+                file ~=
+                ""     -- idk why i left NvimTree there
 
             if condition then
                 vim.api.nvim_del_augroup_by_name("BeLazyOnFileOpen" .. plugin)
@@ -46,4 +48,3 @@ M.lazy_load = function(plugin)
 end
 
 return M
-

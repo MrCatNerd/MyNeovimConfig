@@ -44,12 +44,6 @@ return {
         { "<leader>pf", "<cmd>Telescope find_files<CR>", desc = "Telescope find files" },
         { "<C-p>",      "<cmd>Telescope git_files<CR>",  desc = "Telescope git files" },
     },
-    -- init = function()
-    --     local builtin = require("telescope.builtin")
-    --
-    --     vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
-    --     vim.keymap.set("n", "<C-p>", builtin.git_files, {})
-    -- end,
     config = function(_, opts)
         local telescope = require("telescope")
 

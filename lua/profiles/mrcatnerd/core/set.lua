@@ -19,7 +19,11 @@ vim.opt.undodir = os.getenv("HOME") ..
     "/.vim/undodir" -- this won't work on normal (window) cmds, use powershell instead.
 vim.opt.undofile = true
 
-vim.env.VIMCONFIG = vim.fn.expand("$LOCALAPPDATA/nvim")
+if vim.loop.os_uname().sysname == "Windows_NT" then -- TODO: make more like that for other path and windows - linux stuff
+    vim.env.VIMCONFIG = vim.fn.expand("$LOCALAPPDATA/nvim")
+else
+    vim.env.VIMCONFIG = vim.fn.expand("~/.config/nvim")
+end
 
 vim.opt.hlsearch = false -- best option ever
 vim.opt.incsearch = true
