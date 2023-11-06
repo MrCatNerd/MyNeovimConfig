@@ -23,3 +23,5 @@ git clone https://github.com/MrCatNerd/MyNeovimConfig/
 * (can be integrated with windows terminal by making a cmder task in windows terminal search it on google yourself im too lazy to put it maybe one day i will)
 
 TODO: put the .clang_format file here too and make a script that transfers it
+
+choco install tree-sitter for windows

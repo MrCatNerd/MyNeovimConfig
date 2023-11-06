@@ -16,7 +16,6 @@ return {
             "rust-analyzer",
             "sqlls",
             "stylua",
-            "java-language-server",
         }, -- not an option from mason.nvim (stolen from nvchad)
 
         PATH = "skip",
