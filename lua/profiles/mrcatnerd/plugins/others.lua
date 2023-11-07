@@ -105,24 +105,5 @@ return {
         opts = {
             -- add any custom options here
         },
-        keys = {
-            {
-                "<leader>qs",
-                [[<cmd>lua require("persistence").load()<CR>]],
-                desc =
-                "restore the session for the current directory"
-            },
-            {
-                "<leader>ql",
-                [[<cmd>lua require("persistence").load({ last = true })<CR>]],
-                desc = "restore the last session"
-            },
-            {
-                "<leader>qd",
-                [[<cmd>lua require("persistence").stop()<CR>]],
-                desc =
-                "stop Persistence => session won't be saved on exit"
-            },
-        },
     },
 }
