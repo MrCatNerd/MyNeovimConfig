@@ -4,4 +4,5 @@ return {
     require("profiles.mrcatnerd.plugins.lsp.mason"),
     require("profiles.mrcatnerd.plugins.lsp.formatter"),
     require("profiles.mrcatnerd.plugins.lsp.lspconfig"),
+    require("profiles.mrcatnerd.plugins.lsp.others"),
 }

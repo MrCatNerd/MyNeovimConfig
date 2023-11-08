@@ -1,6 +1,6 @@
 {
     
     "diagnostics.globals" : ["vim"],
-    "workspace.userThirdParty": true
+    "workspace.userThirdParty": true,
 }
 

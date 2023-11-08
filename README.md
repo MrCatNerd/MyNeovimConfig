@@ -31,3 +31,6 @@ git clone https://github.com/MrCatNerd/MyNeovimConfig/
 TODO: put the .clang_format file here too and make a script that transfers it
 
 choco install tree-sitter for windows
+
+## TODO::
+* add sql (especially mysql) support

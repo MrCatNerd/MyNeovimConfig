@@ -5,6 +5,7 @@ return {
         "nvim-tree/nvim-web-devicons",
         "meuter/lualine-so-fancy.nvim",
     },
+
     opts = {
         options = {
             -- theme = "seoul256",
@@ -15,6 +16,7 @@ return {
                 statusline = 100,
             },
         },
+
         sections = {
             lualine_a = {
                 { "fancy_mode", width = 3 }
