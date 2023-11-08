@@ -15,8 +15,8 @@ vim.opt.wrap = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") ..
-    "/.vim/undodir" -- this won't work on normal (window) cmds, use powershell instead.
+vim.opt.undodir = os.getenv("HOME") .. -- works on linux as well i think
+    "/.vim/undodir"                    -- this won't work on normal (window) cmds, use powershell instead.
 vim.opt.undofile = true
 
 if vim.loop.os_uname().sysname == "Windows_NT" then -- TODO: make more like that for other path and windows - linux stuff

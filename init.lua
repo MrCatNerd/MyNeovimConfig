@@ -21,3 +21,5 @@ require("profiles.mrcatnerd.plugins.ui.colors") -- not loading immediately so u 
 
 -- idk why this doesnt work:
 -- print("Shut down your computer to exit Vim") -- best line of code i've ever written
+--
+vim.cmd(":autocmd BufNew * :echo \"Shut down your computer to exit Vim\"")

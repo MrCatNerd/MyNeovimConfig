@@ -44,6 +44,7 @@ return {
     },
     config = function(_, opts)
         if not (vim.loop.os_uname().sysname == "Windows_NT") then
+            -- require "nvim-treesitter.install".compilers = { "MSBuild" }
             require("nvim-treesitter.configs").setup(opts)
         end
     end,

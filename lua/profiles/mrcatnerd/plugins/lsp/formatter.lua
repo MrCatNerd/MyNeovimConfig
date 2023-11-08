@@ -17,7 +17,6 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 
 return {
     "mhartington/formatter.nvim",
-    -- event = "BufRead",
     event = "BufWritePre",
 
     config = function()
