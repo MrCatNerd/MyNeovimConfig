@@ -24,6 +24,8 @@ return {
 
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+        -- idk why this aint working
+
         -- lspconfig.tsserver.setup({
         --     on_attach = on_attach,
         --     capabilities = capabilities,
