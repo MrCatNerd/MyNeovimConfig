@@ -24,6 +24,25 @@ return {
 
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+        -- lspconfig.tsserver.setup({
+        --     on_attach = on_attach,
+        --     capabilities = capabilities,
+        --     root_dir = function()
+        --         return vim.fn.getcwd()
+        --     end,
+        -- })
+
+        -- lspconfig.sqlls.setup({
+        --     on_attach = function()
+        --         on_attach()
+        --     end,
+        --     capabilities = capabilities,
+        --     root_dir = function()
+        --         return vim.fn.getcwd()
+        --     end,
+        --     settings = {},
+        -- })
+
         lspconfig.lua_ls.setup({
             on_attach = on_attach,
             capabilities = capabilities,
@@ -140,6 +159,9 @@ return {
                         autoImportCompletions = false,
                         reportMissingImports = true,
                         followImportForHints = true,
+                        reportGeneralTypeIssues = true,
+                        analyzeUnannotatedFunctions = true,
+                        reportDeprecated = true,
                     },
                 },
             },

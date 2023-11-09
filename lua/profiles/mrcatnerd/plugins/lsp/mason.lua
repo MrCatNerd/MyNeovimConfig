@@ -3,6 +3,7 @@ return {
     cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
     opts = { -- THX NVCHAD
         ensure_installed = {
+            "typescript-language-server",
             "bash-language-server",
             "biome",
             "black",
