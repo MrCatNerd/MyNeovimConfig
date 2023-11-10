@@ -5,6 +5,7 @@ return {
         { "<leader>fq", "<cmd>TroubleToggle quickfix<CR>",              desc = "Toggles trouble quickfix list" },
         { "gR",         "<cmd>TroubleToggle lsp_references<CR>",        desc = "Toggles trouble lsp references" },
     },
+    cmd = "Trouble",
     config = function()
         local trouble = require("trouble")
         trouble.setup({

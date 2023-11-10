@@ -88,14 +88,16 @@ return {
         },
     },
     {
-        "MrCatNerd/temp.nvim",
+        -- "MrCatNerd/temp.nvim",
+        "temp.nvim",
+        dev = true,
         dependencies = "nvim-lua/plenary.nvim",
         keys = { -- best thing ever
-            { "<leader>www", "<cmd>TempToggleMenu<CR>", desc = "Toggles temp.nvim menu" },
+            { "<leader>www", "<cmd>TempToggle<CR>", desc = "Toggles temp.nvim menu" },
         },
-        cmd = "TempToggleMenu",
+        cmd = { "TempToggle", "DBG" },
         config = function()
-            vim.schedule(require("temp").setup)
+            require("temp").setup()
         end,
     },
 

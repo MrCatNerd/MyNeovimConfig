@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 
--- vim.keymap.set("n", "<leader>pv", vim.cmd.Vex)
+-- vim.keymap.set("nnew_filetype, "<leader>pv", vim.cmd.Vex)
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -48,11 +48,11 @@ vim.keymap.set("n", "<leader>md", function()    -- mark/s delete
     local marks = vim.fn.input("clear marks: ") -- get marks
 
     if marks == "!" then
-        vim.cmd(":silent delmarks!") -- clear all lowercase marks
+        vim.cmd(":delmarks!") -- clear all lowercase marks
         return
     end
 
-    vim.cmd(string.format(":silent delmarks %s", marks)) -- clear mark/s
+    vim.cmd(string.format(":delmarks %s", marks)) -- clear mark/s
 end, { silent = true })
 
 vim.keymap.set("n", "<leader>mD", function()                  -- macro delete
