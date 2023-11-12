@@ -68,3 +68,8 @@ vim.keymap.set("n", "<leader>e", "<C-^>")
 
 -- help tags
 vim.keymap.set("n", "<C-i>", "<cmd>Telescope help_tags<CR>")
+
+-- terminal
+vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
+vim.keymap.set("t", "<C-w>w", [[<C-\><C-n>]])
+vim.keymap.set("t", "<C-w><C-w>", [[<C-\><C-n>]])
