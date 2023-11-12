@@ -22,7 +22,7 @@ M.lazy_load = function(plugin)
         group = vim.api.nvim_create_augroup("BeLazyOnFileOpen" .. plugin, {}),
         callback = function()
             local file = vim.fn.expand "%"
-            local condition = file ~= "netrw" and "NvimTree_1" and file ~= "[lazy]" and
+            local condition = file ~= "NvimTree_1" and file ~= "[lazy]" and
                 file ~=
                 "" -- idk why i left NvimTree there
 

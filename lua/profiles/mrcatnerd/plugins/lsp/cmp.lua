@@ -19,6 +19,8 @@ return
                 ["<C-b>"] = cmp.mapping.scroll_docs(-4),
                 ["<C-f>"] = cmp.mapping.scroll_docs(4),
                 ["<C-e>"] = cmp.mapping.abort(),
+                ["<C-n>"] = cmp.mapping.select_next_item(),
+                ["<C-p>"] = cmp.mapping.select_prev_item(),
                 ["<C-space>"] = cmp.mapping.complete(),
                 ["<C-y>"] = cmp.mapping.confirm({
                     select = true, -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
@@ -37,12 +39,14 @@ return
             },
 
             sources = cmp.config.sources({
-                { name = "nvim_lua", max_item_count = 40 },                                        -- nvim_lua automatically handles the enabling in lua files only
+                { name = "nvim_lua", max_item_count = 40 }, -- nvim_lua automatically handles the enabling in lua files only
+                { name = "crates",   max_item_count = 40 }, -- for rust
 
-                { name = "luasnip",  max_item_count = 20, option = { show_autosnippets = true } }, -- For luasnip users.
                 { name = "nvim_lsp", max_item_count = 30 },
+                -- { name = "luasnip",  max_item_count = 5,  option = { show_autosnippets = true } }, -- For luasnip users.
+                { name = "luasnip",  max_item_count = 5 }, -- For luasnip users.
                 { name = "buffer",   keyword_length = 3,  max_item_count = 20 },
-                { name = "path",     max_item_count = 15 },
+                { name = "path",     max_item_count = 15, keyword_length = 2 },
             }),
 
             experimental = {

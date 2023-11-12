@@ -5,9 +5,9 @@ return {
         require("common.utils").lazy_load("nvim-lspconfig")
     end,
     config = function()
-        local lspconfig = require("lspconfig")
+        local lspconfig                                     = require("lspconfig")
 
-        local on_attach = function()
+        local on_attach                                     = function()
             local opts = { buffer = 0 }
 
             vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)                          -- hover
@@ -22,7 +22,27 @@ return {
             vim.keymap.set("n", "<leader>vdl", "<cmd>Telescope diagnostics<CR>", opts) -- vim diagnostics list
         end
 
-        local capabilities = require("cmp_nvim_lsp").default_capabilities()
+        local capabilities                                  = require("cmp_nvim_lsp").default_capabilities()
+
+        -- local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+        capabilities.textDocument.completion.completionItem = {
+            documentationFormat = { "markdown", "plaintext" },
+            snippetSupport = true,
+            preselectSupport = true,
+            insertReplaceSupport = true,
+            labelDetailsSupport = true,
+            deprecatedSupport = true,
+            commitCharactersSupport = true,
+            tagSupport = { valueSet = { 1 } },
+            resolveSupport = {
+                properties = {
+                    "documentation",
+                    "detail",
+                    "additionalTextEdits",
+                },
+            },
+        }
 
         -- idk why this aint working
 
@@ -54,18 +74,27 @@ return {
 
             settings = {
                 Lua = {
-                    diagnostics = {
-                        globals = { "vim" },
-                    },
                     useLibraryCodeForTypes = true,
                     autoSearchPaths = true,
                     autoImportCompletions = false,
                     reportMissingImports = true,
+                    diagnostics = {
+                        globals = { "vim" },
+                    },
+                    runtime = {
+                        -- Tell the language server which version of Lua you"re using
+                        -- (most likely LuaJIT in the case of Neovim)
+                        version = "LuaJIT"
+                    },
                     workspace = {
+                        checkThirdParty = false,
                         library = {
                             [vim.fn.expand("$VIMRUNTIME/lua")] = true,
                             [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
                             [vim.fn.stdpath("data") .. "/lazy/lazy.nvim/lua/lazy"] = true,
+                            vim.env.VIMRUNTIME,
+                            -- "${3rd}/luv/library"
+                            -- "${3rd}/busted/library",
                         },
                         maxPreload = 100000,
                         preloadFileSize = 10000,
@@ -74,6 +103,7 @@ return {
                 },
             },
         })
+
 
         lspconfig.gopls.setup({
             on_attach = on_attach,
@@ -86,9 +116,6 @@ return {
         lspconfig.rust_analyzer.setup({
             on_attach = on_attach,
             capabilities = capabilities,
-            root_dir = function()
-                return vim.fn.getcwd()
-            end,
             cmd = { "rustup", "run", "stable", "rust-analyzer" },
             settings = {
                 rust_analyzer = {
