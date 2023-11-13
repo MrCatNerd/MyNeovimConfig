@@ -1,16 +1,19 @@
 -- This needs to be at top of your `init.lua`
-require("profiles.mrcatnerd.core.set")
+
+vim.schedule(function()
+	require("profiles.mrcatnerd.core.set")
+end)
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
-        lazypath,
-    })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -19,4 +22,4 @@ require("profiles.mrcatnerd.plugins")
 
 require("profiles.mrcatnerd.plugins.ui.colors") -- not loading immediately so u might notice colorscheme changes (but it doest save some startuptime))
 
-print("Shut down your computer to exit Vim")    -- best line of code i've ever written
+print("Shut down your computer to exit Vim") -- best line of code i've ever written

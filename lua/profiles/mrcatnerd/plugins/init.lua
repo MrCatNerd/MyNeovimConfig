@@ -25,7 +25,6 @@ local plugins = { -- lazy is true by default (lua\\profiles\\mrcatnerd\\opts.lua
     require("profiles.mrcatnerd.plugins.surround"),
     require("profiles.mrcatnerd.plugins.refactoring"),
     require("profiles.mrcatnerd.plugins.todocomments"),
-    require("profiles.mrcatnerd.plugins.neoterm"),
 }
 
 local opts = require("profiles.mrcatnerd.core.opts")

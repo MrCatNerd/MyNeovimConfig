@@ -76,10 +76,10 @@ return {
     },
 
     -- stupid stuff / maliciousness / other
-    { "ThePrimeagen/vim-be-good", cmd = { "VimBeGood" } },
+    { "ThePrimeagen/vim-be-good", cmd = "VimBeGood" },
     {
         "eandrju/cellular-automaton.nvim",
-        cmd = { "CellularAutomaton" },
+        cmd = "CellularAutomaton",
         keys = {
             { "<leader>mr", function()
                 require("cellular-automaton").start_animation("make_it_rain")
@@ -109,3 +109,4 @@ return {
         },
     },
 }
+

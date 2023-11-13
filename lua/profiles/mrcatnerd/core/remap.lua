@@ -29,10 +29,9 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader>fl", vim.lsp.buf.format) -- lsp formatting
-vim.keymap.set("n", "<leader>ff", function()          -- formatter.nvim formatting (better in my opinion)
-    pcall(vim.cmd, "<cmd>silent FormatWrite<CR>")
-end)
+vim.keymap.set("n", "<leader>fl", vim.lsp.buf.format)      -- lsp formatting
+vim.keymap.set("n", "<leader>ff", "<cmd>ConformWrite<CR>") -- formatter.nvim formatting (better in my opinion)
+
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
@@ -69,7 +68,9 @@ vim.keymap.set("n", "<leader>e", "<C-^>")
 -- help tags
 vim.keymap.set("n", "<C-i>", "<cmd>Telescope help_tags<CR>")
 
+
 -- terminal
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
-vim.keymap.set("t", "<C-w>w", [[<C-\><C-n>]])
-vim.keymap.set("t", "<C-w><C-w>", [[<C-\><C-n>]])
+vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]])
+vim.keymap.set("n", "<leader>tt", "<cmd>sp | terminal<CR>")
+
