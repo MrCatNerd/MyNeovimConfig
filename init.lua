@@ -19,5 +19,3 @@ require("profiles.mrcatnerd.core")
 require("profiles.mrcatnerd.plugins")
 
 require("profiles.mrcatnerd.plugins.ui.colors") -- not loading immediately so u might notice colorscheme changes (but it doest save some startuptime))
-
-print("Shut down your computer to exit Vim") -- best line of code i've ever written
