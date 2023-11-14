@@ -55,7 +55,7 @@ vim.opt.shortmess:append("sI")
 
 -- dont list quickfix buffers
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = "qf",
+	pattern = { "qf", "notify" },
 	callback = function()
 		vim.opt_local.buflisted = false
 	end,

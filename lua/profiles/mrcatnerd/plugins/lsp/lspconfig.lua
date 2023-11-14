@@ -7,8 +7,15 @@ return {
 		{
 			"mrded/nvim-lsp-notify",
 			dependencies = { "rcarriga/nvim-notify" },
-			config = function()
-				require("lsp-notify").setup()
+			opts = {
+				icons = {
+					--- Spinner animation frames.
+					--- Can be set to `= false` to disable only spinner.
+					spinner = false,
+				},
+			},
+			config = function(_, opts)
+				require("lsp-notify").setup(opts)
 			end,
 		},
 	},
