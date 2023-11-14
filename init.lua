@@ -1,8 +1,6 @@
 -- This needs to be at top of your `init.lua`
 
-vim.schedule(function()
-	require("profiles.mrcatnerd.core.set")
-end)
+require("profiles.mrcatnerd.core.set")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then

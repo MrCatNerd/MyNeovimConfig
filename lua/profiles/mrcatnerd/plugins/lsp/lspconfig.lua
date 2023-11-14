@@ -1,13 +1,33 @@
 return {
     "neovim/nvim-lspconfig",
-    -- lazy = false, -- will break if not
     init = function()
         require("common.utils").lazy_load("nvim-lspconfig")
     end,
+    dependencies = {
+        {
+            "mrded/nvim-lsp-notify",
+            dependencies = { "rcarriga/nvim-notify" },
+            config = function()
+                require("lsp-notify").setup()
+            end,
+        },
+        {
+            "zeioth/garbage-day.nvim",
+            dependencies = "neovim/nvim-lspconfig",
+            opts = {
+                -- your options here
+                aggressive_mode = false,
+                wakeup_delay = 10,
+                notifications = false,
+                retries = 3,
+                timeout = 100,
+            }
+        },
+    },
     config = function()
-        local lspconfig                                     = require("lspconfig")
+        local lspconfig = require("lspconfig")
 
-        local on_attach                                     = function()
+        local on_attach = function()
             local opts = { buffer = 0 }
 
             vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)                          -- hover
@@ -22,7 +42,7 @@ return {
             vim.keymap.set("n", "<leader>vdl", "<cmd>Telescope diagnostics<CR>", opts) -- vim diagnostics list
         end
 
-        local capabilities                                  = require("cmp_nvim_lsp").default_capabilities()
+        local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
         -- local capabilities = vim.lsp.protocol.make_client_capabilities()
 
@@ -84,7 +104,7 @@ return {
                     runtime = {
                         -- Tell the language server which version of Lua you"re using
                         -- (most likely LuaJIT in the case of Neovim)
-                        version = "LuaJIT"
+                        version = "LuaJIT",
                     },
                     workspace = {
                         checkThirdParty = false,
@@ -103,7 +123,6 @@ return {
                 },
             },
         })
-
 
         lspconfig.gopls.setup({
             on_attach = on_attach,
@@ -125,11 +144,30 @@ return {
                     reportMissingImports = true,
                     followImportForHints = true,
 
+                    imports = {
+                        granularity = {
+                            group = "module",
+                        },
+                        prefix = "self",
+                    },
+
                     cargo = {
+                        buildScripts = {
+                            enable = true,
+                        },
                         allFeatures = true,
                     },
+
+                    procMacro = {
+                        enable = true
+                    },
+
                     checkOnSave = {
                         command = "cargo clippy",
+                    },
+
+                    cachePriming = { -- massive boost
+                        enable = true
                     },
                 },
             },
@@ -197,3 +235,4 @@ return {
         })
     end,
 }
+

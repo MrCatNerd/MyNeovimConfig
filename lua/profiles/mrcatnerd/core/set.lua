@@ -48,22 +48,23 @@ vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 vim.g.mapleader = " "
 
+--[[
 -- stolen from nvchad
 
 vim.opt.shortmess:append("sI")
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-	pattern = "qf",
-	callback = function()
-		vim.opt_local.buflisted = false
-	end,
+    pattern = "qf",
+    callback = function()
+        vim.opt_local.buflisted = false
+    end,
 })
 
 -- disable somoe default providers
 for _, provider in ipairs({ "node", "perl", "python3", "ruby" }) do
-	vim.g["loaded_" .. provider .. "_provider"] = 0
+    vim.g["loaded_" .. provider .. "_provider"] = 0
 end
 
 -- binaries installed by mason.nvim to PATH
 local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
-vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin" .. (is_windows and ";" or ":") .. vim.env.PATH
+vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin" .. (is_windows and ";" or ":") .. vim.env.PATH ]]
