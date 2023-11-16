@@ -45,7 +45,6 @@ vim.keymap.set("n", "<leader>e", "<C-^>", { desc = "Alternate file remap" }) -- 
 -- terminal
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { desc = "QOL thingy" })
 vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], { desc = "QOL thingy" })
-vim.keymap.set("n", "<leader>tt", "<cmd>sp | terminal<CR>", { desc = "Open new neovim terminal" })
 
 -- quickfix
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "Next quickfix item" })

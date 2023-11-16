@@ -42,7 +42,7 @@ return {
 		},
 		{ "<leader>pf", "<cmd>Telescope find_files<CR>", desc = "Telescope find files" },
 		{ "<C-p>", "<cmd>Telescope git_files<CR>", desc = "Telescope git files" },
-		{ "<C-i>", "<cmd>Telescope help_tags<CR>", desc = "Telescope help tags (best thing ever)" },
+		-- { "<C-i>", "<cmd>Telescope help_tags<CR>", desc = "Telescope help tags (best thing ever)" },
 	},
 	config = function(_, opts)
 		local telescope = require("telescope")
