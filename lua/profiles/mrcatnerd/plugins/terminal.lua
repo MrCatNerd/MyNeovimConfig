@@ -8,6 +8,13 @@ return {
 			desc = "Open new terminal (terminal.nvim)",
 		},
 	},
+	cmd = {
+		"ToggleTerm",
+		"ToggleTermToggleAll",
+		"TermExec",
+		"TermSelect",
+		"ToggleTermSetName",
+	},
 	opts = { --[[ things you want to change go here]]
 	},
 	config = function(_, opts)

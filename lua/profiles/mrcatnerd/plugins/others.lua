@@ -19,14 +19,6 @@ return {
 	},
 
 	{
-		"xiyaowong/transparent.nvim",
-		event = "ColorScheme",
-		config = function()
-			require("transparent").setup()
-		end,
-	},
-
-	{
 		"numToStr/Comment.nvim",
 		keys = {
 			{ "gcc", mode = "n", desc = "Comment toggle current line" },

@@ -119,7 +119,7 @@ return {
 							key = "q",
 							key_hl = "Number",
 							-- key_format = " %s", -- remove default surrounding `[]`
-							action = "silent normal ZZ",
+							action = "silent normal ZZ", -- not a good way to exit
 						},
 					},
 				},

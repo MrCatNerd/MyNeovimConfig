@@ -1,12 +1,18 @@
-function ColorMyPencils(color)
-    color = color or "rose-pine-moon"
-    -- color = color or "catppuccin-frappe"
-    -- color = color or "tokyonight-storm"
+require("rose-pine").setup({
+	disable_background = true,
+})
 
-    vim.schedule(function()
-        vim.cmd.colorscheme(color)
-        require("transparent").toggle(true)
-    end)
+function ColorMyPencils(color)
+	color = color or "rose-pine-moon"
+	-- color = color or "catppuccin-frappe"
+	-- color = color or "tokyonight-storm"
+
+	vim.cmd.colorscheme(color)
+
+	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 end
 
-ColorMyPencils()
+vim.schedule(function()
+	ColorMyPencils()
+end)

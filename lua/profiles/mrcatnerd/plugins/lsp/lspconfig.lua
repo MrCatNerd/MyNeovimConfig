@@ -3,22 +3,6 @@ return {
 	init = function()
 		require("common.utils").lazy_load("nvim-lspconfig")
 	end,
-	dependencies = {
-		{
-			"mrded/nvim-lsp-notify",
-			dependencies = { "rcarriga/nvim-notify" },
-			opts = {
-				icons = {
-					--- Spinner animation frames.
-					--- Can be set to `= false` to disable only spinner.
-					spinner = false,
-				},
-			},
-			config = function(_, opts)
-				require("lsp-notify").setup(opts)
-			end,
-		},
-	},
 	config = function()
 		local lspconfig = require("lspconfig")
 
@@ -96,6 +80,12 @@ return {
 					diagnostics = {
 						globals = { "vim" },
 					},
+					format = {
+						defaultConfig = {
+							indent_style = "space",
+							indent_size = 2,
+						},
+					},
 					runtime = {
 						-- Tell the language server which version of Lua you"re using
 						-- (most likely LuaJIT in the case of Neovim)
@@ -103,6 +93,7 @@ return {
 					},
 					workspace = {
 						checkThirdParty = false,
+						userThirdParty = true,
 						library = {
 							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
 							[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
@@ -161,7 +152,7 @@ return {
 						command = "cargo clippy",
 					},
 
-					cachePriming = { -- massive boost
+					cachePriming = { -- enable caching
 						enable = true,
 					},
 				},
