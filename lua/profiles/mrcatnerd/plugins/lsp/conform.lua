@@ -1,27 +1,12 @@
 return { -- formatting
 	"stevearc/conform.nvim",
-	cmd = { "ConformInfo", "ConformWrite" },
+	cmd = { "ConformInfo", "ConformWrite", "FormatWrite" },
 	event = "BufWritePre",
 	config = function()
 		local format_on_save = true
-		local lsp_format_on_save = true -- true: lsp format, false: formatter.nvim
+		local lsp_format_on_save = false -- true: lsp format, false: conform.nvim
 
-		vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-			pattern = "*",
-			callback = function(args)
-				-- print(vim.inspect(args))
-				-- print(vim.fn.winbufnr(0))
-				if format_on_save then
-					if lsp_format_on_save then
-						vim.lsp.buf.format()
-					else
-						require("conform").format({ bufnr = args.buf })
-					end
-				end
-			end,
-		})
-
-		vim.api.nvim_create_user_command("ConformWrite", function(_)
+		vim.api.nvim_create_user_command("FormatWrite", function(_)
 			if format_on_save then
 				if lsp_format_on_save then
 					vim.lsp.buf.format()
@@ -29,6 +14,10 @@ return { -- formatting
 					require("conform").format({ bufnr = vim.fn.winbufnr(0) })
 				end
 			end
+		end, {})
+
+		vim.api.nvim_create_user_command("ConformWrite", function(_)
+			require("conform").format({ bufnr = vim.fn.winbufnr(0) })
 		end, {})
 
 		require("conform").setup({
