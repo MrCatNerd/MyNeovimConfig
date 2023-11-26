@@ -1,10 +1,11 @@
-return {
+return { -- to look into: https://github.com/NvChad/nvterm
 	"akinsho/toggleterm.nvim",
 	version = "*",
 	keys = {
 		{
 			"<leader>tt",
-			"<cmd>ToggleTerm size=13 direction=horizontal name=Terminal<CR>",
+			-- "<cmd>ToggleTerm size=13 direction=horizontal name=Terminal<CR>",
+			"<cmd>ToggleTerm direction=horizontal name=Terminal<CR>",
 			desc = "Open new terminal (terminal.nvim)",
 		},
 	},

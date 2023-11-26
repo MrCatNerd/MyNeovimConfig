@@ -106,9 +106,6 @@ return {
 			{ "<leader>www", "<cmd>TempToggleMenu<CR>", desc = "Toggles temp.nvim menu" },
 		},
 		cmd = "TempToggleMenu",
-		config = function()
-			-- require("temp").setup()
-		end,
 	},
 
 	{
