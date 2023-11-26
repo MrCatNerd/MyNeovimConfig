@@ -16,7 +16,7 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste motion (p) to void register" })
 
 -- next greatest remap ever : asbjornHaland
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "yank motion (y) to void register" })
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank motion (y) to void register" })
 vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank until end of line motion (Y) to void register" })
 
 vim.keymap.set({ "n", "v" }, "<leader>c", [["+c]], { desc = "Change motion (c) to void register" })
@@ -34,7 +34,7 @@ vim.keymap.set(
 	"n",
 	"<leader>s",
 	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-	{ desc = "Find and replace (no LSP)" }
+	{ desc = "Find and replace only on current file (no LSP)" }
 )
 
 vim.keymap.set("n", "<leader><leader>", "<cmd>so<CR>", { desc = "source remap" })
@@ -43,8 +43,8 @@ vim.keymap.set("n", "<leader><leader>", "<cmd>so<CR>", { desc = "source remap" }
 vim.keymap.set("n", "<leader>e", "<C-^>", { desc = "Alternate file remap" }) -- cause I have a - 100% keyboard
 
 -- terminal
-vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { desc = "QOL thingy" })
-vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], { desc = "QOL thingy" })
+vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { desc = "Terminal QOL thingy" })
+vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], { desc = "Terminal QOL thingy" })
 
 -- quickfix
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "Next quickfix item" })
@@ -72,10 +72,10 @@ vim.keymap.set("n", "<leader>md", function() -- mark/s delete
 	end
 
 	vim.cmd(string.format(":delmarks %s", marks)) -- clear mark/s
-end, { silent = true })
+end, { silent = true, desc = "Delte a certain mark or all lowercase marks" })
 
 vim.keymap.set("n", "<leader>mD", function() -- macro delete
 	local macro_key = vim.fn.input("clear macro key: ") -- get macro key
 
 	vim.cmd(string.format(":silent let @%s = ''", macro_key)) -- clear macro key
-end, { silent = true })
+end, { silent = true, desc = "Delte a certain macro" })

@@ -1,4 +1,4 @@
--- formatting events moved to formatter.nvim files
+--  formatting events moved to formatter.nvim files
 
 -- line numbers
 vim.api.nvim_create_autocmd({ "InsertEnter" }, {

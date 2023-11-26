@@ -1,7 +1,7 @@
 return {
 	"nvimdev/dashboard-nvim",
 	-- event = "VimEnter", -- default but UIEnter is faster
-	-- event = "UIEnter",
+	event = "UIEnter",
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 	},
@@ -9,15 +9,14 @@ return {
 		"Dashboard",
 		"DbProjectDelete count",
 	},
-	lazy = false,
 	config = function()
 		vim.schedule(function() -- TODO: find out how nvchad do it but i have no wifi so...
 			require("dashboard").setup({
 				theme = "doom",
 				config = {
-					week_header = {
-						-- enable = true, --boolean use a week header
-					},
+					--[[ week_header = {
+						enable = true, --boolean use a week header
+					}, ]]
 
 					-- comment week_header to enable this cat
 					header = {
@@ -119,7 +118,7 @@ return {
 							key = "q",
 							key_hl = "Number",
 							-- key_format = " %s", -- remove default surrounding `[]`
-							action = "silent normal ZZ", -- not a good way to exit
+							action = "silent normal ZZ",
 						},
 					},
 				},
