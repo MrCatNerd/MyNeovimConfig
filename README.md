@@ -8,7 +8,7 @@ disclaimer: this config isnt tested in linux
 disclaimer: there are too many disclaimers here
 
 ```sh
-git clone https://github.com/MrCatNerd/MyNeovimConfig/
+git clone https://github.com/MrCatNerd/MyNeovimConfig.git
 ```
 
 ## general:
