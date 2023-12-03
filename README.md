@@ -13,10 +13,12 @@ git clone https://github.com/MrCatNerd/MyNeovimConfig.git
 
 ## general:
 * `ripgrep`
+* `cmake` and `make`
 * `python`
 * `node.js`
 * `c / c++ compiler`
 * `golang`
+* `rust`
 * other stuff that i forgot
 
 

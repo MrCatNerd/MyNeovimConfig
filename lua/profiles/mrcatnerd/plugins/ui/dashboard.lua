@@ -36,7 +36,6 @@ return {
 						"  ██▒▒▒▒▒▒▒▒▒▒██████▒▒▒▒▒▒▒▒▒▒██  ",
 						"    ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██    ",
 						"    ██████████████████████████    ",
-						"",
 					},
 
 					center = {
@@ -47,7 +46,7 @@ return {
 							desc_hl = "String",
 							key = "pf",
 							key_hl = "Number",
-							-- key_format = " %s", -- remove default surrounding `[]`
+							-- key_format = " %s", -- remove default surrounding ``
 							action = "Telescope find_files",
 						},
 						{
@@ -123,6 +122,6 @@ return {
 					},
 				},
 			})
-		end, 1)
+		end)
 	end,
 }

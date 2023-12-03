@@ -19,6 +19,6 @@ return {
 
 		vim.notify = notify
 
-		notify("Shut down your computer to exit Vim", "info") -- best line of code ever
+		notify("Shut down your computer to exit Vim", vim.log.levels.INFO) -- best line of code ever
 	end,
 }

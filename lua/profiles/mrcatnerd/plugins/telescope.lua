@@ -5,21 +5,27 @@ return {
 	cmd = "Telescope",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
+		-- Cmake
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 		},
-	},
-	extensions_list = { "themes", "terms", "fzf" },
-	extensions = {
-		fzf = {
-			fuzzy = true,
-			override_generic_sorter = true,
-			override_file_sorter = true,
-			case_mode = "smart_case",
-		},
+		-- Make
+		--[[ {
+			"nvim-telescope/telescope-fzf-native.nvim",
+			build = "make",
+		}, ]]
 	},
 	opts = {
+		extensions_list = { "themes", "terms", "fzf" },
+		extensions = {
+			fzf = {
+				fuzzy = true,
+				override_generic_sorter = true,
+				override_file_sorter = true,
+				case_mode = "smart_case",
+			},
+		},
 		defaults = {
 			prompt_prefix = "$ ",
 			selection_caret = "> ",
@@ -38,7 +44,7 @@ return {
 			function()
 				require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") })
 			end,
-			desc = "projects search",
+			desc = "Projects search",
 		},
 		{ "<leader>pf", "<cmd>Telescope find_files<CR>", desc = "Telescope find files" },
 		{ "<C-p>", "<cmd>Telescope git_files<CR>", desc = "Telescope git files" },
@@ -49,6 +55,8 @@ return {
 
 		telescope.setup(opts)
 
-		telescope.load_extension("fzf")
+		if vim.loop.os_uname().sysname == "Windows_NT" then -- idk why but it says on linux that fzf isnt installed or smth
+			telescope.load_extension("fzf")
+		end
 	end,
 }

@@ -1,5 +1,13 @@
-vim.opt.guicursor = ""
+vim.opt.guicursor =
+	"n-v-c:block,i-ci-ve:block,r-cr:block,o:block,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
+-- TODO: commit to gh
+
 vim.opt.mouse = "a"
+
+-- TODO: make this work
+--[[ vim.cmd("set guicursor=n:blinkon0")
+vim.cmd("set guicursor=c:blinkon0")
+vim.cmd("set guicursor=v:blinkon0") ]]
 
 vim.opt.number = false
 vim.opt.nu = true
@@ -18,12 +26,13 @@ vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") -- works on linux as well i think
 	.. "/.vim/undodir" -- this won't work on normal (window) cmds, use powershell instead.
 vim.opt.undofile = true
-
-if vim.loop.os_uname().sysname == "Windows_NT" then -- TODO: make more like that for other path and windows - linux stuff
-	vim.env.VIMCONFIG = vim.fn.expand("$LOCALAPPDATA/nvim")
-else
-	vim.env.VIMCONFIG = vim.fn.expand("~/.config/nvim")
-end
+vim.env.VIMCONFIG = (function()
+	if vim.loop.os_uname().sysname == "Windows_NT" then -- TODO: make more like that for other path and windows - linux stuff
+		return vim.fn.expand("$LOCALAPPDATA/nvim")
+	else
+		return vim.fn.expand("~/.config/nvim")
+	end
+end)()
 
 vim.opt.hlsearch = false -- best option ever
 vim.opt.incsearch = true
