@@ -9,6 +9,7 @@ disclaimer: there are too many disclaimers here
 
 ```sh
 git clone https://github.com/MrCatNerd/MyNeovimConfig.git
+sudo apt install python3-neovim # for the :python command
 ```
 
 ## general:
@@ -34,3 +35,4 @@ choco install tree-sitter for windows
 ## TODO:
 * add sql (especially mysql) support
 * put the .clang_format file here too and make a script that transfers it
+* put script thingy for linux
