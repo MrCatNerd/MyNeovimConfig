@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cp ./.clang_format ~/.clang_format
+cp $PWD/.clang-format ~/.clang_format
