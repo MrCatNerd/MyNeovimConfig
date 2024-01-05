@@ -7,10 +7,10 @@ return {
 	},
 	cmd = {
 		"Dashboard",
-		"DbProjectDelete count",
+		"DbProjectDelete",
 	},
 	config = function()
-		vim.schedule(function() -- TODO: find out how nvchad do it but i have no wifi so...
+		vim.schedule(function()
 			require("dashboard").setup({
 				theme = "doom",
 				config = {
