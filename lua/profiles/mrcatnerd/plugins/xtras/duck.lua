@@ -8,6 +8,7 @@ return {
 		"DuckGoBrrr",
 		"EatDuckForBreakfast",
 	},
+	enabled = false,
 	config = function()
 		vim.api.nvim_create_user_command("DuckGoBrrr", function()
 			require("duck").hatch("🐤")
