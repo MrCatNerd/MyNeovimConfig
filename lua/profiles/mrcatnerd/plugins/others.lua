@@ -80,7 +80,7 @@ return {
 				function()
 					require("cellular-automaton").start_animation("make_it_rain")
 				end,
-				"make it rain",
+				desc = "make it rain",
 			},
 		},
 	},
