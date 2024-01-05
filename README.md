@@ -7,7 +7,6 @@ disclaimer: there are too many disclaimers here
 
 ```sh
 git clone https://github.com/MrCatNerd/MyNeovimConfig.git
-sudo apt install python3-neovim # for the :python command
 ```
 
 ## general:
