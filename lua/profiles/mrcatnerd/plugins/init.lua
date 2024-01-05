@@ -15,6 +15,8 @@ local plugins = { -- lazy is true by default (lua\\profiles\\mrcatnerd\\opts.lua
 	require("profiles.mrcatnerd.plugins.xtras"),
 
 	require("profiles.mrcatnerd.plugins.treesitter"),
+	require("profiles.mrcatnerd.plugins.refactoring"),
+
 	require("profiles.mrcatnerd.plugins.harpoon"),
 	require("profiles.mrcatnerd.plugins.telescope"),
 
@@ -22,7 +24,6 @@ local plugins = { -- lazy is true by default (lua\\profiles\\mrcatnerd\\opts.lua
 
 	require("profiles.mrcatnerd.plugins.sql"),
 	require("profiles.mrcatnerd.plugins.surround"),
-	require("profiles.mrcatnerd.plugins.refactoring"),
 	require("profiles.mrcatnerd.plugins.todocomments"),
 	require("profiles.mrcatnerd.plugins.terminal"),
 }
