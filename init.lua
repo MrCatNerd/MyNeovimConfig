@@ -1,9 +1,5 @@
 -- This needs to be at top of your `init.lua`
 
-if vim.loader then
-	vim.loader.enable()
-end
-
 require("profiles.mrcatnerd.core.set")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
