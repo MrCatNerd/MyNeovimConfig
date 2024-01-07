@@ -34,13 +34,12 @@ vim.keymap.set(
 	"n",
 	"<leader>s",
 	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-	{ desc = "Find and replace only on current file (no LSP)" }
+	{ desc = "Find and replace only in current file (no LSP)" }
 )
 
 vim.keymap.set("n", "<leader><leader>", "<cmd>so<CR>", { desc = "source remap" })
 
--- file scrolling
-vim.keymap.set("n", "<leader>e", "<C-^>", { desc = "Alternate file remap" }) -- cause I have a - 100% keyboard
+vim.keymap.set("n", "<leader>e", "<C-^>", { desc = "Alternate file remap cuz I have a - 100% keyboard" })
 
 -- terminal
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { desc = "Terminal QOL thingy" })

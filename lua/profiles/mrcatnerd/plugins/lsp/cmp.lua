@@ -20,7 +20,10 @@ return {
 				["<C-e>"] = cmp.mapping.abort(),
 				["<C-n>"] = cmp.mapping.select_next_item(),
 				["<C-p>"] = cmp.mapping.select_prev_item(),
-				["<C-space>"] = cmp.mapping.complete(),
+				["<C-space>"] = cmp.mapping.complete({
+					select = true,
+					behavior = cmp.ConfirmBehavior.Insert,
+				}),
 				["<C-y>"] = cmp.mapping.confirm({
 					select = true, -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 					behavior = cmp.ConfirmBehavior.Insert,
