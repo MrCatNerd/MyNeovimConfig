@@ -1,3 +1,5 @@
 #!/bin/bash
 
-cp $PWD/.clang-format ~/.clang-format
+echo just stow it
+
+# cp $PWD/.clang-format ~/.clang-format

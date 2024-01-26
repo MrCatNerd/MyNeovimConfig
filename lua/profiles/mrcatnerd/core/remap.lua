@@ -53,7 +53,13 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Next location lis
 -- vim.keymap.set("n", "<leader>vpp", "<cmd>e $VIMCONFIG<CR>", { desc = "Go to neovim config" }) -- i dont really use that
 
 -- mostly on linux
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { desc = "New tmux session or smth" })
+vim.keymap.set(
+	"n",
+	"<C-f>",
+	"<cmd>silent !tmux neww tmux-sessionizer<CR>",
+	{ desc = "New tmux window with tmux-sessionizer" }
+)
+
 vim.keymap.set(
 	"n",
 	"<leader>xx",

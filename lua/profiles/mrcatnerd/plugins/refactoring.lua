@@ -4,10 +4,11 @@ return {
 		"nvim-lua/plenary.nvim",
 		"nvim-treesitter/nvim-treesitter",
 	},
+	cmd = { "Refactor" },
 	keys = {
 		{
 			"<leader>ri",
-			[[ <Esc><Cmd>lua require('refaitoring').refactor('Inline Variable')<CR>]],
+			[[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]],
 			{ noremap = true, silent = true, expr = false },
 		},
 	},
