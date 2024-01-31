@@ -8,8 +8,9 @@ return {
 	keys = {
 		{
 			"<leader>ri",
-			[[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]],
+			[[<Cmd>'<,'>lua require('refactoring').refactor('Inline Variable')<CR>]],
 			{ noremap = true, silent = true, expr = false },
+			mode = "v",
 		},
 	},
 	config = function()
