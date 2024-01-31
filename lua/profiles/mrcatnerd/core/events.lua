@@ -10,7 +10,7 @@ vim.schedule(function()
 		end,
 	})
 
-	vim.api.nvim_create_autocmd({ "InsertLeavePre" }, {
+	vim.api.nvim_create_autocmd({ "InsertLeave" }, {
 		callback = function()
 			vim.opt.number = false
 			vim.opt.nu = true
