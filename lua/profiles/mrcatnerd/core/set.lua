@@ -48,6 +48,7 @@ vim.opt.colorcolumn = "80"
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- stolen from nvchad
 
