@@ -44,9 +44,9 @@ return {
 				{ name = "nvim_lua", max_item_count = 40 }, -- nvim_lua automatically handles the enabling in lua files only
 				{ name = "crates", max_item_count = 40 }, -- for rust
 				{ name = "vim_dadbod_completion", max_item_count = 40 },
+
 				{ name = "nvim_lsp", max_item_count = 30 },
-				-- { name = "luasnip",  max_item_count = 5,  option = { show_autosnippets = true } }, -- For luasnip users.
-				{ name = "luasnip", max_item_count = 5 }, -- For luasnip users.
+				{ name = "luasnip", max_item_count = 5, option = { show_autosnippets = true } }, -- For luasnip users.
 				{ name = "codeium", keyword_length = 2, max_item_count = 20 },
 				{ name = "buffer", keyword_length = 3, max_item_count = 20 },
 				{ name = "path", max_item_count = 15, keyword_length = 2 },
