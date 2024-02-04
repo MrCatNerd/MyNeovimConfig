@@ -20,6 +20,7 @@ return {
 				pcall(lspconfig[server].setup, config)
 			else
 				vim.notify(server)
+				vim.notify(vim.inspect(config))
 			end
 		end
 	end,
