@@ -9,9 +9,16 @@ return { -- thx nvchad
 			not_loaded = "",
 		},
 	},
+
 	dev = {
 		-- directory where you store your local plugin projects
-		path = vim.fn.expand("$USERPROFILE\\nvim_plugins"),
+		path = function()
+			if vim.loop.os_uname().sysname == "Windows_NT" then
+				vim.fn.expand("$USERPROFILE\\nvim_plugins")
+			else
+				vim.fn.expand("$HOME/Documents/nvim_plugins")
+			end
+		end,
 		---@type string[] plugins that match these patterns will use your local versions instead of being fetched from GitHub
 		patterns = {}, -- For example {"folke"}
 		fallback = false, -- Fallback to git when local plugin doesn't exist

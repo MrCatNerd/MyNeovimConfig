@@ -1,6 +1,6 @@
 return {
 	"rcarriga/nvim-notify",
-	event = "UIEnter",
+	-- event = "UIEnter",
 	config = function()
 		local notify = require("notify")
 		notify.setup({
@@ -18,7 +18,5 @@ return {
 		})
 
 		vim.notify = notify
-
-		notify("Shut down your computer to exit Vim", "info") -- best line of code ever
 	end,
 }
