@@ -1,6 +1,9 @@
 return {
 	"eandrju/cellular-automaton.nvim",
 	cmd = "CellularAutomaton",
+	dependencies = {
+		"nvim-tree/nvim-web-devicons",
+	},
 	keys = {
 		{
 			"<leader>mr",

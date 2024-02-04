@@ -17,6 +17,7 @@ return {
 			"go",
 			"glsl",
 			"hlsl",
+			"markdown",
 			"lua",
 			"vim",
 			"vimdoc",

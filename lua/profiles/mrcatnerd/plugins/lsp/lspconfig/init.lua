@@ -16,7 +16,11 @@ return {
 				capabilities = utils.capabilities,
 				root_dir = vim.fn.getcwd,
 			}, override or {})
-			lspconfig[server].setup(config)
+			if lspconfig[server] ~= nil then
+				pcall(lspconfig[server].setup, config)
+			else
+				vim.notify(server)
+			end
 		end
 	end,
 }
