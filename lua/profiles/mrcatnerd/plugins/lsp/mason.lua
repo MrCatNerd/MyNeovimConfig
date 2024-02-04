@@ -1,6 +1,6 @@
 return {
 	"williamboman/mason.nvim",
-	cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
+	cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstallAll", "MasonUpdate" },
 	opts = { -- THX NVCHAD
 		ensure_installed = {
 			"typescript-language-server",

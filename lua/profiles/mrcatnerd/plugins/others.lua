@@ -13,9 +13,7 @@ return {
 	{
 		"tikhomirov/vim-glsl",
 		ft = "glsl",
-		enabled = function() -- BECAUSE TREESITTER ISNT WORKING
-			return vim.loop.os_uname().sysname == "Windows_NT"
-		end,
+		enabled = vim.loop.os_uname().sysname == "Windows_NT", -- BECAUSE TREESITTER ISNT WORKING
 	},
 
 	{

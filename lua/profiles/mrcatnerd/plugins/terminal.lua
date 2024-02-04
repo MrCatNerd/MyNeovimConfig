@@ -1,6 +1,7 @@
 return { -- to look into: https://github.com/NvChad/nvterm
 	"akinsho/toggleterm.nvim",
 	version = "*",
+	enabled = vim.loop.os_uname().sysname == "Windows_NT", -- tmux btw
 	keys = {
 		{
 			"<leader>tt",
