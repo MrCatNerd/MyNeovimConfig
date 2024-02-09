@@ -3,18 +3,17 @@ return {
 	cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstallAll", "MasonUpdate" },
 	opts = { -- THX NVCHAD
 		ensure_installed = {
+			-- "csharp-language-server",
+			-- "bash-language-server",
+			-- "biome",
 			"typescript-language-server",
-			"bash-language-server",
-			"biome",
 			"black",
 			"clangd",
 			"cmake-language-server",
-			"csharp-language-server",
 			"gopls",
 			"lua-language-server",
 			"pyright",
 			"rust-analyzer",
-			"sqlls",
 			"stylua",
 		}, -- not an option from mason.nvim (stolen from nvchad)
 

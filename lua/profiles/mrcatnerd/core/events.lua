@@ -24,4 +24,11 @@ vim.schedule(function()
 			command = "set ft=glsl",
 		})
 	end
+
+	-- i know this ain't no event but I got nowhere to put it
+	-- create a command
+	vim.api.nvim_create_user_command("Wake", "w | !make", {})
+	-- vim.api.nvim_create_user_command("DuckGoBrrr", function()
+	-- 	require("duck").hatch("🐤")
+	-- end, {})
 end)

@@ -3,6 +3,7 @@ return {
 	init = function()
 		require("common.utils").lazy_load("nvim-lspconfig")
 	end,
+	cmd = { "LspInfo", "LspLog", "LspStop", "LspStart", "LspRestart" },
 	config = function()
 		local lspconfig = require("lspconfig")
 
@@ -43,26 +44,29 @@ return {
 			},
 		}
 
-		-- idk why this aint working
+		-- TODO: make this small sample work instead of last time that i went all in and failed....
+		local default_table = {
+			on_attach = on_attach,
+			capabilities = capabilities,
+			root_dir = function()
+				return vim.fn.getcwd()
+			end,
+		}
 
-		-- lspconfig.tsserver.setup({
-		--     on_attach = on_attach,
-		--     capabilities = capabilities,
-		--     root_dir = function()
-		--         return vim.fn.getcwd()
-		--     end,
-		-- })
+		local servers = { "tsserver", "gopls" }
 
-		-- lspconfig.sqlls.setup({
-		--     on_attach = function()
-		--         on_attach()
-		--     end,
-		--     capabilities = capabilities,
-		--     root_dir = function()
-		--         return vim.fn.getcwd()
-		--     end,
-		--     settings = {},
-		-- })
+		-- loop through the servers and set up defaul config with vim.merge_tbl thing
+		for _, server in ipairs(servers) do
+			lspconfig[server].setup(vim.tbl_extend("force", default_table, {}))
+		end
+
+		--[[ lspconfig.gopls.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			root_dir = function()
+				return vim.fn.getcwd()
+			end,
+		}) ]]
 
 		lspconfig.lua_ls.setup({
 			on_attach = on_attach,
@@ -108,14 +112,6 @@ return {
 					},
 				},
 			},
-		})
-
-		lspconfig.gopls.setup({
-			on_attach = on_attach,
-			capabilities = capabilities,
-			root_dir = function()
-				return vim.fn.getcwd()
-			end,
 		})
 
 		lspconfig.rust_analyzer.setup({
