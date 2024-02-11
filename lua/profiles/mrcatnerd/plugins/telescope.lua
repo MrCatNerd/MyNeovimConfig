@@ -81,6 +81,13 @@ return {
 		{ "<leader>pf", "<cmd>Telescope find_files<CR>", desc = "Telescope find files" },
 		{ "<C-p>", "<cmd>Telescope git_files<CR>", desc = "Telescope git files" },
 		{ "<Tab>", "<cmd>Telescope help_tags<CR>", desc = "Telescope help tags (best thing ever)" },
+		{
+			"<leader>rr",
+			function()
+				require("telescope").extensions.refactoring.refactors()
+			end,
+			mode = { "n", "x" }, -- Note that not all refactor support both normal and visual mode
+		},
 	},
 	config = function(_, opts)
 		local telescope = require("telescope")
@@ -88,5 +95,6 @@ return {
 		telescope.setup(opts)
 
 		telescope.load_extension("fzf")
+		telescope.load_extension("refactoring")
 	end,
 }

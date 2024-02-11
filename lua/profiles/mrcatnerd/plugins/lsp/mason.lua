@@ -6,6 +6,7 @@ return {
 			-- "csharp-language-server",
 			-- "bash-language-server",
 			-- "biome",
+			"gdtoolkit",
 			"typescript-language-server",
 			"black",
 			"clangd",
