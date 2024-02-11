@@ -60,13 +60,16 @@ return {
 			lspconfig[server].setup(vim.tbl_extend("force", default_table, {}))
 		end
 
-		--[[ lspconfig.gopls.setup({
+		lspconfig.gdscript.setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
+			flags = {
+				debounce_text_changes = 150,
+			},
 			root_dir = function()
 				return vim.fn.getcwd()
 			end,
-		}) ]]
+		})
 
 		lspconfig.lua_ls.setup({
 			on_attach = on_attach,
