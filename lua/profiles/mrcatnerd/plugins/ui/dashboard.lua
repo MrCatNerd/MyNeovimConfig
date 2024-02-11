@@ -41,16 +41,6 @@ return {
 
 					center = {
 						{
-							icon = " ",
-							icon_hl = "Title",
-							desc = "Find File           ",
-							desc_hl = "String",
-							key = "pf",
-							key_hl = "Number",
-							-- key_format = " %s", -- remove default surrounding `[]`
-							action = "Telescope find_files",
-						},
-						{
 							icon = "󰦛 ",
 							icon_hl = "Title",
 							desc = "Restore Session",
@@ -83,22 +73,22 @@ return {
 						{
 							icon = " ",
 							icon_hl = "Title",
-							desc = "Update",
+							desc = "Sync",
 							desc_hl = "String",
 							key = "u",
 							key_hl = "Number",
 							-- key_format = " %s", -- remove default surrounding `[]`
-							action = "Lazy update",
+							action = "Lazy sync",
 						},
 						{
-							icon = " ",
+							icon = "󰢛 ",
 							icon_hl = "Title",
-							desc = "Latest Session",
+							desc = "Mason",
 							desc_hl = "String",
-							key = "sl",
+							key = "m",
 							key_hl = "Number",
 							-- key_format = " %s", -- remove default surrounding `[]`
-							action = "lua require('persistence').load({ last = true })",
+							action = "Mason",
 						},
 						{
 							icon = " ",
@@ -109,6 +99,16 @@ return {
 							key_hl = "Number",
 							-- key_format = " %s", -- remove default surrounding `[]`
 							action = "lua vim.cmd.Git()",
+						},
+						{
+							icon = " ",
+							icon_hl = "Title",
+							desc = "Latest Session",
+							desc_hl = "String",
+							key = "sl",
+							key_hl = "Number",
+							-- key_format = " %s", -- remove default surrounding `[]`
+							action = "lua require('persistence').load({ last = true })",
 						},
 						{
 							icon = "󰗼 ",
