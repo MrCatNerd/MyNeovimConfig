@@ -1,28 +1,53 @@
 return {
-	"nvim-treesitter/nvim-treesitter", -- TODO: treesitter-textobjects
+	"nvim-treesitter/nvim-treesitter",
 	init = function()
 		require("common.utils").lazy_load("nvim-treesitter")
 	end,
-	cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo", "TSEnable", "TSDisable", "TSModuleInfo" },
+	cmd = {
+		"EditQuery",
+		"Inspect",
+		"InspectTree",
+		"TSBufDisable",
+		"TSBufEnable",
+		"TSDisable",
+		"TSEnable",
+		"TSInstall",
+		"TSModuleInfo",
+		"TSUpdate",
+		"TSUpdateSync",
+	},
 	build = ":TSUpdate",
 	opts = {
 		-- A list of parser names, or "all" (the five listed parsers should always be installed)
 		ensure_installed = {
-			"javascript",
-			"typescript",
-			"rust",
-			"python",
-			"cpp",
+			"bash",
 			"c",
-			"go",
-			"glsl",
-			"hlsl",
+			"cpp",
+			"diff",
 			"gdscript",
-			"markdown",
+			"glsl",
+			"go",
+			"hlsl",
+			"html",
+			"javascript",
+			"jsdoc",
+			"json",
+			"jsonc",
 			"lua",
+			"luadoc",
+			"luap",
+			"markdown",
+			"markdown_inline",
+			"python",
+			"query",
+			"regex",
+			"rust",
+			"toml",
+			"tsx",
+			"typescript",
 			"vim",
 			"vimdoc",
-			"query",
+			"yaml",
 		},
 
 		-- Install parsers synchronously (only applied to `ensure_installed`)
@@ -42,6 +67,11 @@ return {
 			-- Using this option may slow down your editor, and you may see some duplicate highlights.
 			-- Instead of true it can also be a list of languages
 			additional_vim_regex_highlighting = false,
+			disable = function(_, bufnr)
+				local buf_name = vim.api.nvim_buf_get_name(bufnr)
+				local file_size = vim.api.nvim_call_function("getfsize", { buf_name })
+				return file_size > 256 * 1024
+			end,
 		},
 	},
 	config = function(_, opts)

@@ -2,22 +2,6 @@ return {
 	"williamboman/mason.nvim",
 	cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstallAll", "MasonUpdate" },
 	opts = { -- THX NVCHAD
-		ensure_installed = {
-			-- "csharp-language-server",
-			-- "bash-language-server",
-			-- "biome",
-			"gdtoolkit",
-			"typescript-language-server",
-			"black",
-			"clangd",
-			"cmake-language-server",
-			"gopls",
-			"lua-language-server",
-			"pyright",
-			"rust-analyzer",
-			"stylua",
-		}, -- not an option from mason.nvim (stolen from nvchad)
-
 		PATH = "skip",
 
 		ui = {
@@ -42,15 +26,31 @@ return {
 		max_concurrent_installers = 10,
 	},
 	config = function(_, opts)
-		require("mason").setup({ opts })
+		require("mason").setup(opts)
+
+		local ensure_installed = {
+			-- "csharp-language-server",
+			-- "bash-language-server",
+			-- "biome",
+			"gdtoolkit",
+			"typescript-language-server",
+			"black",
+			"clangd",
+			"cmake-language-server",
+			"gopls",
+			"lua-language-server",
+			"pyright",
+			"rust-analyzer",
+			"stylua",
+		} -- not an option from mason.nvim (stolen from nvchad)
 
 		-- custom cmd to install all mason binaries listed (Shamelessly stolen from NvChad)
 		vim.api.nvim_create_user_command("MasonInstallAll", function()
-			if opts.ensure_installed and #opts.ensure_installed > 0 then
-				vim.cmd("MasonInstall " .. table.concat(opts.ensure_installed, " "))
+			if ensure_installed and #ensure_installed > 0 then
+				vim.cmd("MasonInstall " .. table.concat(ensure_installed, " "))
 			end
 		end, {})
 
-		vim.g.mason_binaries_list = opts.ensure_installed
+		vim.g.mason_binaries_list = ensure_installed
 	end,
 }

@@ -16,7 +16,12 @@ return {
 		},
 	},
 	config = function()
-		require("refactoring").setup()
+		require("refactoring").setup({
+			-- overriding extract statement for go
+			extract_var_statements = {
+				go = "%s := %s // poggers",
+			},
+		})
 	end,
 	enabled = function() -- treesitter is not working on windows :(
 		return not (vim.loop.os_uname().sysname == "Windows_NT")

@@ -67,15 +67,15 @@ vim.keymap.set("n", "<leader>md", function() -- mark/s delete
 	local marks = vim.fn.input("clear marks: ") -- get marks
 
 	if marks == "!" then
-		vim.cmd(":delmarks!") -- clear all lowercase marks
+		vim.cmd(":silent delmarks!") -- clear all lowercase marks
 		return
 	end
 
-	vim.cmd(string.format(":delmarks %s", marks)) -- clear mark/s
-end, { silent = true, desc = "Delte a certain mark or all lowercase marks" })
+	vim.cmd(string.format(":silent delmarks %s", marks)) -- clear mark/s
+end, { silent = true, desc = "Delte a mark or all lowercase marks" })
 
 vim.keymap.set("n", "<leader>mD", function() -- macro delete
 	local macro_key = vim.fn.input("clear macro key: ") -- get macro key
 
 	vim.cmd(string.format(":silent let @%s = ''", macro_key)) -- clear macro key
-end, { silent = true, desc = "Delte a certain macro" })
+end, { silent = true, desc = "Delete a macro" })
