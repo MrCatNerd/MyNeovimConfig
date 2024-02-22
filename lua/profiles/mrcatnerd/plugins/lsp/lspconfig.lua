@@ -162,22 +162,17 @@ return {
 		})
 
 		lspconfig.clangd.setup({
-			on_attach = on_attach,
+			on_attach = function(client)
+				client.server_capabilities.signetureHelpProvider = false
+				on_attach()
+			end,
 			capabilities = capabilities,
+			cmd = { "clangd", "--background-index" },
 			root_dir = function()
 				return vim.fn.getcwd()
 			end,
-
-			filetypes = { "c", "cpp" },
-
+			filetypes = { "c", "cpp", "objc", "objcpp" },
 			settings = {
-				msvc = {
-					compilationDatabasePath = "<path-to-your-compilation-database>",
-					clangdFileStatus = true,
-					usePlaceholders = true,
-					buildDirectory = "<path-to-your-build-directory>",
-					resourceDirectory = "<path-to-your-resource-directory>",
-				},
 				clangd = {
 					completeUnimported = true,
 					fallbackFlags = {},
@@ -191,6 +186,8 @@ return {
 						reportMissingImports = true,
 						followImportForHints = true,
 					},
+					-- Add the current directory to include path
+					extraArgs = { "-Iinclude" },
 				},
 			},
 		})

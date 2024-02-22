@@ -18,10 +18,8 @@ vim.schedule(function()
 		end,
 	})
 
-	if vim.loop.os_uname().sysname == "Windows_NT" then
-		vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-			pattern = "*.vs,*.fs",
-			command = "set ft=glsl",
-		})
-	end
+	vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+		pattern = { "*.vs,*.fs", "*.shader", "*.vert", "*.frag", "*.geom", "*.tesc", "*.tese", "*.comp" },
+		command = "set ft=glsl",
+	})
 end)

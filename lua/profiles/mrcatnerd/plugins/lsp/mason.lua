@@ -42,6 +42,7 @@ return {
 			"pyright",
 			"rust-analyzer",
 			"stylua",
+			"glsl_analyzer",
 		} -- not an option from mason.nvim (stolen from nvchad)
 
 		-- custom cmd to install all mason binaries listed (Shamelessly stolen from NvChad)

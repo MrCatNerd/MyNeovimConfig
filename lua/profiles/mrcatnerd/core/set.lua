@@ -61,9 +61,7 @@ vim.opt.colorcolumn = "80"
 
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
--- stolen from nvchad
-
--- disable nvim intro
+-- vim.opt.shortmess:append("sIc")
 vim.opt.shortmess:append("sI")
 
 -- dont list quickfix buffers

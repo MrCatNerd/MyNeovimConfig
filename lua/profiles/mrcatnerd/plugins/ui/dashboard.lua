@@ -101,16 +101,6 @@ return {
 							action = "lua vim.cmd.Git()",
 						},
 						{
-							icon = " ",
-							icon_hl = "Title",
-							desc = "Latest Session",
-							desc_hl = "String",
-							key = "sl",
-							key_hl = "Number",
-							-- key_format = " %s", -- remove default surrounding `[]`
-							action = "lua require('persistence').load({ last = true })",
-						},
-						{
 							icon = "󰗼 ",
 							icon_hl = "Title",
 							desc = "Exit",
@@ -118,7 +108,7 @@ return {
 							key = "q",
 							key_hl = "Number",
 							-- key_format = " %s", -- remove default surrounding `[]`
-							action = "silent normal ZZ",
+							action = "q",
 						},
 					},
 				},
