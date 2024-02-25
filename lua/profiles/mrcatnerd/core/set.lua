@@ -42,6 +42,7 @@ end
 
 vim.opt.hlsearch = false -- best option ever
 vim.opt.incsearch = true
+vim.opt.smartcase = true
 
 vim.opt.termguicolors = true
 
@@ -54,8 +55,16 @@ vim.opt.splitbelow = true
 vim.opt.timeout = true
 vim.opt.timeoutlen = 1000
 
+-- Decrease update time
 vim.opt.updatetime = 50
 -- vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300
+
+-- Sets how neovim will display certain whitespace in the editor.
+--  See :help 'list'
+--  and :help 'listchars'
+vim.opt.list = false -- set to true te enable listchars
+vim.opt.listchars = { trail = "·", nbsp = "␣" }
 
 vim.opt.colorcolumn = "80"
 

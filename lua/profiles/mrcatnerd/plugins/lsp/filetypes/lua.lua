@@ -14,11 +14,10 @@ ls.add_snippets(nil, {
 		-- my snippets:
 
 		-- my snippeets kinda:
-		ls.parser.parse_snippet("req", 'local $1 = require("$0")'), -- TODO
 		ls.parser.parse_snippet("lf", string.format("local $1 = function ($2)\n%s$0\nend", spaces_in_tabs)), -- local function
 		ls.parser.parse_snippet("mf", string.format("$1.$2 = function ($3)\n%s$0\nend", spaces_in_tabs)), -- mothod function
 
-		s( -- faster
+		s(
 			"insertable",
 			fmt("{}[#{} + 1] = {}", {
 				i(1, "tablename"),
@@ -26,7 +25,5 @@ ls.add_snippets(nil, {
 				i(0, "value"),
 			})
 		),
-
-		-- snippets i stole from the internet:
 	},
 })

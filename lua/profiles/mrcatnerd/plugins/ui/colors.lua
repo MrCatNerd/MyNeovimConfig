@@ -3,9 +3,9 @@ require("rose-pine").setup({
 })
 
 function ColorMyPencils(color)
-	-- color = color or "rose-pine-moon"
+	color = color or "rose-pine-moon"
 	-- color = color or "hybrid"
-	color = color or "catppuccin-frappe"
+	-- color = color or "catppuccin-frappe"
 
 	vim.cmd.colorscheme(color)
 

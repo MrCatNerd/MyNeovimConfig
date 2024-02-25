@@ -58,8 +58,8 @@ vim.keymap.set("n", "<leader><leader>", "<cmd>so<CR>", { desc = "source remap" }
 vim.keymap.set("n", "<leader>e", "<C-^>", { desc = "Alternate file remap cuz I have a - 100% keyboard" })
 
 -- terminal
-vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { desc = "Terminal QOL thingy" })
-vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], { desc = "Terminal QOL thingy" })
+vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Escape Escape exits terminal mode" })
+vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], { desc = "exits terminal mode" })
 
 -- quickfix
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "Next quickfix item" })
