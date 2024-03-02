@@ -1,5 +1,3 @@
---  formatting events moved to formatter.nvim files
-
 -- line numbers
 vim.schedule(function()
 	vim.api.nvim_create_autocmd({ "InsertEnter" }, {
@@ -18,8 +16,14 @@ vim.schedule(function()
 		end,
 	})
 
-	vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+	vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
 		pattern = { "*.vs,*.fs", "*.shader", "*.vert", "*.frag", "*.geom", "*.tesc", "*.tese", "*.comp" },
 		command = "set ft=glsl",
+	})
+
+	-- TODO: find a better solution for this
+	vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
+		pattern = { "*.rasi" },
+		command = "set ft=rasi",
 	})
 end)

@@ -53,7 +53,7 @@ return {
 			end,
 		}
 
-		local servers = { "tsserver", "gopls", "glsl_analyzer" } -- the servers in this list will be configured just enough to work
+		local servers = { "tsserver", "gopls", "glsl_analyzer", "cmake" } -- the servers in this list will be configured just enough to work
 
 		-- glsl_analyzer requires some extra setup cuz they are not on mason yet
 		-- https://github.com/nolanderc/glsl_analyzer?tab=readme-ov-file#installation
@@ -163,7 +163,7 @@ return {
 
 		lspconfig.clangd.setup({
 			on_attach = function(client)
-				client.server_capabilities.signetureHelpProvider = false
+				client.server_capabilities.signatureHelpProvider = false
 				on_attach()
 			end,
 			capabilities = capabilities,
@@ -175,7 +175,7 @@ return {
 			settings = {
 				clangd = {
 					completeUnimported = true,
-					fallbackFlags = {},
+					-- fallbackFlags = {}, -- Remove this line or set it to nil if you want to use .clangd file flags
 					showOrigins = true,
 					useFallbackFlags = true,
 					trace = { server = "verbose" },
@@ -186,8 +186,6 @@ return {
 						reportMissingImports = true,
 						followImportForHints = true,
 					},
-					-- Add the current directory to include path
-					extraArgs = { "-Iinclude" },
 				},
 			},
 		})

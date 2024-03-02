@@ -47,7 +47,7 @@ vim.opt.smartcase = true
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
-vim.opt.sidescrolloff = 2
+vim.opt.sidescrolloff = 4
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 vim.opt.splitbelow = true

@@ -48,6 +48,9 @@ return {
 			"vim",
 			"vimdoc",
 			"yaml",
+			"csv",
+			"sql",
+			"rasi",
 		},
 
 		-- Install parsers synchronously (only applied to `ensure_installed`)
