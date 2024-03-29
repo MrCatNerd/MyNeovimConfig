@@ -13,7 +13,7 @@ return { -- thx nvchad
 	dev = {
 		-- directory where you store your local plugin projects
 		path = function()
-			if vim.loop.os_uname().sysname == "Windows_NT" then
+			if vim.fn.has("win32") ~= 0 then
 				vim.fn.expand("$USERPROFILE\\nvim_plugins")
 			else
 				vim.fn.expand("$HOME/Documents/nvim_plugins")

@@ -1,7 +1,7 @@
-return { -- to look into: https://github.com/NvChad/nvterm
+return { -- only activated on windows cuz no tmux on windows
 	"akinsho/toggleterm.nvim",
 	version = "*",
-	enabled = vim.loop.os_uname().sysname == "Windows_NT", -- tmux btw
+	enabled = vim.fn.has("win32") ~= 0, -- tmux btw
 	keys = {
 		{
 			"<leader>tt",
@@ -17,8 +17,7 @@ return { -- to look into: https://github.com/NvChad/nvterm
 		"TermSelect",
 		"ToggleTermSetName",
 	},
-	opts = { --[[ things you want to change go here]]
-	},
+	opts = {},
 	config = function(_, opts)
 		require("toggleterm").setup(opts)
 	end,

@@ -23,8 +23,12 @@ return {
 			"bash",
 			"c",
 			"cpp",
+			"css",
+			"csv",
 			"diff",
+			"dockerfile",
 			"gdscript",
+			"gitignore",
 			"glsl",
 			"go",
 			"hlsl",
@@ -40,17 +44,16 @@ return {
 			"markdown_inline",
 			"python",
 			"query",
+			"rasi",
 			"regex",
 			"rust",
+			"sql",
 			"toml",
 			"tsx",
 			"typescript",
 			"vim",
 			"vimdoc",
 			"yaml",
-			"csv",
-			"sql",
-			"rasi",
 		},
 
 		-- Install parsers synchronously (only applied to `ensure_installed`)
@@ -64,13 +67,14 @@ return {
 			enable = true,
 			use_languagetree = true,
 			indent = { enable = true },
+			highlight = { enable = true },
 
 			-- Setting this to true will run `:h syntax` and tree-sitter at the same time.
 			-- Set this to `true` if you depend on "syntax" being enabled (like for indentation).
 			-- Using this option may slow down your editor, and you may see some duplicate highlights.
 			-- Instead of true it can also be a list of languages
 			additional_vim_regex_highlighting = false,
-			disable = function(_, bufnr)
+			disable = function(_, bufnr) -- Disable treesitter on big files
 				local buf_name = vim.api.nvim_buf_get_name(bufnr)
 				local file_size = vim.api.nvim_call_function("getfsize", { buf_name })
 				return file_size > 256 * 1024
@@ -78,8 +82,7 @@ return {
 		},
 	},
 	config = function(_, opts)
-		if not (vim.loop.os_uname().sysname == "Windows_NT") then
-			-- require "nvim-treesitter.install".compilers = { "MSBuild" }
+		if not vim.fn.has("win32") ~= 0 then
 			require("nvim-treesitter.configs").setup(opts)
 		end
 	end,

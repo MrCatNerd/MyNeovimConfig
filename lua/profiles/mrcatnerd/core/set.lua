@@ -34,7 +34,7 @@ vim.opt.undodir = os.getenv("HOME") -- works on linux as well i think
 	.. "/.vim/undodir" -- this won't work on normal (window) cmds, use powershell instead.
 vim.opt.undofile = true
 
-if vim.loop.os_uname().sysname == "Windows_NT" then -- TODO: make more like that for other path and windows - linux stuff
+if vim.fn.has("win32") ~= 0 then -- TODO: make more like that for other path and windows - linux stuff
 	vim.env.VIMCONFIG = vim.fn.expand("$LOCALAPPDATA/nvim")
 else
 	vim.env.VIMCONFIG = vim.fn.expand("$HOME/.config/nvim")
@@ -82,5 +82,5 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- binaries installed by mason.nvim to PATH
-local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
+local is_windows = vim.fn.has("win32") ~= 0
 vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin" .. (is_windows and ";" or ":") .. vim.env.PATH

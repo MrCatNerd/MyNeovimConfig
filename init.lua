@@ -21,5 +21,5 @@ require("profiles.mrcatnerd.plugins")
 require("profiles.mrcatnerd.plugins.ui.colors") -- not loading immediately so u might notice colorscheme changes (but it doest save some startuptime))
 
 vim.defer_fn(function()
-	require("notify").notify("Shut down your computer to exit Vim", "info") -- best line of code ever
+	require("notify").notify("💀 Shut down your computer to exit Vim", "info") -- best line of code ever
 end, 3500)

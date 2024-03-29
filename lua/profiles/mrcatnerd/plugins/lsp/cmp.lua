@@ -8,7 +8,7 @@ return {
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-nvim-lua",
-		require("profiles.mrcatnerd.plugins.lsp.luasnip"),
+		require("profiles.mrcatnerd.plugins.lsp.nvim-luasnip"),
 	},
 	config = function()
 		local cmp = require("cmp")

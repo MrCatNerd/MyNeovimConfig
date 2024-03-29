@@ -7,24 +7,32 @@ return {
 	config = function()
 		local lspconfig = require("lspconfig")
 
-		local on_attach = function()
+		local on_attach = function(server)
 			local opts = { buffer = 0 }
 
-			vim.keymap.set("n", "K", vim.lsp.buf.hover, opts) -- hover
-			vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts) -- goto defenition
-			vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts) -- goto type definition
-			vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts) -- goto implementation
-			vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, opts) -- diagnostics down
-			vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, opts) -- diagnostics up
-			vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts) -- rename something
-			vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts) -- vim code actions
-			vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, opts) -- vim references
-			vim.keymap.set("n", "<leader>vdl", "<cmd>Telescope diagnostics<CR>", opts) -- vim diagnostics list
+			vim.keymap.set("n", "K", vim.lsp.buf.hover, opts, { desc = "Hover" })
+			vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts, { desc = "Goto defenition" })
+			vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts, { desc = "Rename something" })
+			vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts, { desc = "Code actions" })
+			vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, opts, { desc = "References" })
+			vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts, { desc = "Goto implementation" })
+
+			vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts, { desc = "goto type definition" })
+			vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, opts, { desc = "Go to next error (down)" })
+			vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, opts, { desc = "Go to previous error (up)" })
+			vim.keymap.set("n", "<leader>vdl", "<cmd>Telescope diagnostics<CR>", opts, { desc = "Diagnostics list" })
+
+			if server.name == "sqlls" then
+				vim.cmd([[
+                let g:LanguageClient_serverCommands = {
+                    \ 'sql': ['sql-language-server', 'up', '--method', 'stdio'],
+                    \ }
+                    ]])
+			end
 		end
 
-		local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-		-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+		local capabilities = vim.lsp.protocol.make_client_capabilities()
+		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 		capabilities.textDocument.completion.completionItem = {
 			documentationFormat = { "markdown", "plaintext" },
@@ -53,7 +61,7 @@ return {
 			end,
 		}
 
-		local servers = { "tsserver", "gopls", "glsl_analyzer", "cmake" } -- the servers in this list will be configured just enough to work
+		local servers = { "tsserver", "gopls", "glsl_analyzer", "cmake", "sqlls" } -- the servers in this list will be configured just enough to work
 
 		-- glsl_analyzer requires some extra setup cuz they are not on mason yet
 		-- https://github.com/nolanderc/glsl_analyzer?tab=readme-ov-file#installation

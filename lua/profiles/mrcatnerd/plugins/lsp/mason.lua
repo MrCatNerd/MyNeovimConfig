@@ -50,7 +50,7 @@ return {
 			if ensure_installed and #ensure_installed > 0 then
 				vim.cmd("MasonInstall " .. table.concat(ensure_installed, " "))
 			end
-		end, {})
+		end, { desc = "Install all mason stuff specified in `ensure_installed`" })
 
 		vim.g.mason_binaries_list = ensure_installed
 	end,

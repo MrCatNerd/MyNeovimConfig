@@ -1,11 +1,8 @@
-require("rose-pine").setup({
-	disable_background = true,
-})
-
 function ColorMyPencils(color)
-	color = color or "rose-pine-moon"
 	-- color = color or "hybrid"
 	-- color = color or "catppuccin-frappe"
+	-- color = color or "catppuccin-mocha"
+	color = color or "rose-pine-moon"
 
 	vim.cmd.colorscheme(color)
 

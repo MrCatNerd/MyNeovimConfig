@@ -24,6 +24,6 @@ return {
 		})
 	end,
 	enabled = function() -- treesitter is not working on windows :(
-		return not (vim.loop.os_uname().sysname == "Windows_NT")
+		return not vim.fn.has("win32") ~= 0
 	end,
 }

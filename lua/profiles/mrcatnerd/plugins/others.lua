@@ -13,7 +13,7 @@ return {
 	{
 		"tikhomirov/vim-glsl",
 		ft = "glsl",
-		enabled = vim.loop.os_uname().sysname == "Windows_NT", -- BECAUSE TREESITTER ISNT WORKING
+		enabled = vim.fn.has("win32") ~= 0, -- because treesitter isnt working for windows
 	},
 
 	{
@@ -43,27 +43,6 @@ return {
 		},
 		keys = {
 			{ "<leader>u", vim.cmd.UndotreeToggle, desc = "Toggles undotree" },
-		},
-	},
-
-	{
-		"tpope/vim-fugitive",
-		cmd = {
-			"Git",
-			"Gedit",
-			"Gsplit",
-			"Gdiffsplit",
-			"Gvdiffsplit",
-			"Gread",
-			"Gwrite",
-			"Ggrep",
-			"Glgrep",
-			"GMove",
-			"GDelete",
-			"GBrowse",
-		},
-		keys = {
-			{ "<leader>gs", vim.cmd.Git, desc = "Toggles Git" },
 		},
 	},
 

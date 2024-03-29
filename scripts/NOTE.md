@@ -1,1 +1,0 @@
-TODO: make good scripts

@@ -1,20 +1,35 @@
 return {
 	"nvim-telescope/telescope.nvim",
-	-- tag = "0.1.4",
-	-- or                              , branch = "0.1.x",
+	tag = "0.1.5",
+	-- or
+	-- branch = "0.1.x",
 	cmd = "Telescope",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
+		"nvim-tree/nvim-web-devicons",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build", -- cmake
+			-- `cond` is a condition used to determine whether this plugin should be
+			-- installed and loaded.
+			cond = function()
+				return vim.fn.executable("cmake") == 1
+			end,
 		},
 
 		"nvim-treesitter/nvim-treesitter", -- for preview highlighting
 
-		-- { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' } -- make
+		--[[ {
+			"nvim-telescope/telescope-fzf-native.nvim",
+			build = "make",
+			-- `cond` is a condition used to determine whether this plugin should be
+			-- installed and loaded.
+			cond = function()
+				return vim.fn.executable("make") == 1
+			end,
+		}, -- make ]]
 	},
-	extensions_list = { "themes", "terms", "fzf" },
+	-- extensions_list = { "themes", "terms", "fzf" },
 	extensions = {
 		fzf = {
 			fuzzy = true,
@@ -30,7 +45,12 @@ return {
 					["<C-a>"] = function()
 						print("meow")
 					end,
-					--n = { ["q"] = require("telescope.actions").close },
+					-- ["<esc>"] = function()
+					-- 	require("telescope.actions").close()
+					-- end,
+				},
+				n = {
+					-- ["q"] = require("telescope.actions").close
 				},
 			},
 			vimgrep_arguments = {
@@ -62,12 +82,12 @@ return {
 				height = 0.80,
 				preview_cutoff = 120,
 			},
-			file_ignore_patterns = { "node_modules" },
+			file_ignore_patterns = { "node_modules", "__pycache__" },
 			winblend = 0,
-			border = {},
-			borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
 			color_devicons = true,
 			set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
+			-- border = {},
+			-- borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
 		},
 	},
 	keys = {
@@ -94,7 +114,8 @@ return {
 
 		telescope.setup(opts)
 
-		telescope.load_extension("fzf")
-		telescope.load_extension("refactoring")
+		pcall(telescope.load_extension, "fzf")
+		pcall(telescope.load_extension, "ui-select")
+		pcall(telescope.load_extension, "refactoring")
 	end,
 }
