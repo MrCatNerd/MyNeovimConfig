@@ -1,4 +1,4 @@
-return { -- TODO: finish this
+return {
 	"mfussenegger/nvim-dap",
 	cmd = {
 		"DapShowLog",

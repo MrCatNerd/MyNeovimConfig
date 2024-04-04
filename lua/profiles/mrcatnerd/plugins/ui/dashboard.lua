@@ -74,6 +74,7 @@ return {
 	cmd = {
 		"Dashboard",
 		"DbProjectDelete",
+		"DashboardUpdateFooter",
 	},
 	config = function()
 		vim.schedule(function()
