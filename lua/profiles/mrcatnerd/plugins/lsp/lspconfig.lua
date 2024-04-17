@@ -61,7 +61,7 @@ return {
 			end,
 		}
 
-		local servers = { "tsserver", "gopls", "glsl_analyzer", "cmake", "sqlls", "asm_lsp" } -- the servers in this list will be configured just enough to work
+		local servers = { "pyright", "tsserver", "gopls", "glsl_analyzer", "cmake", "sqlls", "asm_lsp" } -- the servers in this list will be configured just enough to work
 
 		-- glsl_analyzer requires some extra setup cuz they are not on mason yet
 		-- https://github.com/nolanderc/glsl_analyzer?tab=readme-ov-file#installation
@@ -198,7 +198,7 @@ return {
 			},
 		})
 
-		lspconfig.pyright.setup({
+		--[[ lspconfig.pyright.setup({
 			on_attach = function(client)
 				client.server_capabilities.signetureHelpProvider = false
 				on_attach()
@@ -223,6 +223,6 @@ return {
 					},
 				},
 			},
-		})
+		}) ]]
 	end,
 }

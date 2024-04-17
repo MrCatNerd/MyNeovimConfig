@@ -16,14 +16,14 @@ vim.schedule(function()
 		end,
 	})
 
-	vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
-		pattern = { "*.vs,*.fs", "*.shader", "*.vert", "*.frag", "*.geom", "*.tesc", "*.tese", "*.comp" },
-		command = "set ft=glsl",
+	-- dont list quickfix buffers
+	vim.api.nvim_create_autocmd("FileType", {
+		pattern = { "qf", "notify" },
+		callback = function()
+			vim.opt_local.buflisted = false
+		end,
 	})
 
-	-- TODO: find a better solution for this
-	vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
-		pattern = { "*.rasi" },
-		command = "set ft=rasi",
-	})
+	vim.api.nvim_create_user_command("S2T", "%s/    /\\t/g", {}) -- space to tab
+	vim.api.nvim_create_user_command("T2S", "%s/\\t/    /g", {}) -- tab to space
 end)

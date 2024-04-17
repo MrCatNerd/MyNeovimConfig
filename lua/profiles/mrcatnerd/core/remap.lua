@@ -28,20 +28,6 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delte motion (d) to
 -- This is going to get me cancelled
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
-vim.keymap.set(
-	"i",
-	"<S-CR>",
-	"<C-o>O",
-	{ desc = "Insert newline behind the cursor", noremap = true, silent = true, expr = false }
-)
-
-vim.keymap.set(
-	"i",
-	"<C-CR>",
-	"<C-o>o",
-	{ desc = "Insert newline after the cursor", noremap = true, silent = true, expr = false }
-)
-
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<leader>fl", vim.lsp.buf.format, { desc = "Formats current file with LSP" }) -- lsp formatting
 vim.keymap.set("n", "<leader>ff", "<cmd>ConformWrite<CR>", { desc = "Formats current file with Conform.nvim" }) -- formatter.nvim formatting (better in my opinion)

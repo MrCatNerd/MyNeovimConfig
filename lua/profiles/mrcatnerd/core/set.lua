@@ -73,14 +73,6 @@ vim.opt.completeopt = { "menu", "menuone", "noselect" }
 -- vim.opt.shortmess:append("sIc")
 vim.opt.shortmess:append("sI")
 
--- dont list quickfix buffers
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "qf", "notify" },
-	callback = function()
-		vim.opt_local.buflisted = false
-	end,
-})
-
 -- binaries installed by mason.nvim to PATH
 local is_windows = vim.fn.has("win32") ~= 0
 vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin" .. (is_windows and ";" or ":") .. vim.env.PATH

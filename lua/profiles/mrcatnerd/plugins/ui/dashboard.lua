@@ -143,12 +143,12 @@ return {
 						{
 							icon = " ",
 							icon_hl = "Title",
-							desc = "Git Fugitive",
+							desc = "Git",
 							desc_hl = "String",
 							key = "gs",
 							key_hl = "Number",
 							-- key_format = " %s", -- remove default surrounding `[]`
-							action = "lua vim.cmd.Git()",
+							action = "lua require('neogit').open()",
 						},
 						{
 							icon = "󰗼 ",

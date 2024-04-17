@@ -6,6 +6,7 @@ function ColorMyPencils(color)
 
 	vim.cmd.colorscheme(color)
 
+	-- comment 2 of the lines below if you want to disable transparency
 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 end

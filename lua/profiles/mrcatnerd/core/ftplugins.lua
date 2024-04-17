@@ -1,0 +1,12 @@
+vim.schedule(function()
+	vim.filetype.add({
+		extension = {},
+		filename = {},
+		pattern = {
+			["*.shader"] = "glsl",
+			["*.vert"] = "glsl",
+			["*.frag"] = "glsl",
+			["*.geom"] = "glsl",
+		},
+	})
+end)
