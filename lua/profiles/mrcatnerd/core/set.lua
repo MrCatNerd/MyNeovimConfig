@@ -1,8 +1,8 @@
 -------------------------------------- globals -----------------------------------------
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.maplocalleader = "\\"
 
--- disable somoe default providers
+-- disable some default providers
 for _, provider in ipairs({ "node", "perl", "python3", "ruby" }) do
 	vim.g["loaded_" .. provider .. "_provider"] = 0
 end
@@ -52,12 +52,10 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 vim.opt.splitbelow = true
 
-vim.opt.timeout = true
-vim.opt.timeoutlen = 1000
-
 -- Decrease update time
 vim.opt.updatetime = 50
 -- vim.opt.updatetime = 250
+vim.opt.timeout = true
 vim.opt.timeoutlen = 300
 
 -- Sets how neovim will display certain whitespace in the editor.
