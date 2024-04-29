@@ -100,7 +100,7 @@ return {
 		},
 		{ "<leader>pf", "<cmd>Telescope find_files<CR>", desc = "Telescope find files" },
 		{ "<C-p>", "<cmd>Telescope git_files<CR>", desc = "Telescope git files" },
-		{ "<Tab>", "<cmd>Telescope help_tags<CR>", desc = "Telescope help tags (best thing ever)" },
+		{ "<leader><Tab>", "<cmd>Telescope help_tags<CR>", desc = "Telescope help tags (best thing ever)" },
 		{
 			"<leader>rr",
 			function()

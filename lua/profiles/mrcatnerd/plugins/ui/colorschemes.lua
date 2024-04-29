@@ -59,6 +59,19 @@ return {
 		priority = 1000,
 	},
 	{
+
+		"maxmx03/fluoromachine.nvim",
+		priority = 1000,
+		config = function()
+			local fm = require("fluoromachine")
+
+			fm.setup({
+				glow = true,
+				theme = "delta", -- you can choose: fluoromachine, retrowave, delta
+			})
+		end,
+	},
+	{
 		"HoNamDuong/hybrid.nvim",
 		name = "hybrid",
 		opts = {

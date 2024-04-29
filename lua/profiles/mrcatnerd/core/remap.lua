@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+vim.g.maplocalleader = "\\" -- same as leader
 
 -- vim.keymap.set("n", "<leader>pv", vim.cmd.Vex, { desc = "Opens Netrw vsplitted" })
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Opens Netrw" })

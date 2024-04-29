@@ -4,6 +4,7 @@ local plugins = { -- lazy is true by default (lua\\profiles\\mrcatnerd\\opts.lua
 
 	{
 		"nvim-tree/nvim-web-devicons",
+		cmd = "NvimWebDeviconsHiTest",
 		config = function(_, opts)
 			require("nvim-web-devicons").setup(opts)
 		end,

@@ -48,6 +48,7 @@ return {
 			"regex",
 			"rust",
 			"sql",
+			"tmux",
 			"toml",
 			"tsx",
 			"typescript",
