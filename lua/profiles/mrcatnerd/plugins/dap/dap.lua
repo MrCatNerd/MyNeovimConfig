@@ -21,11 +21,32 @@ return {
 			{ desc = "Toggle DAP breakpoint" },
 		},
 		{
-			"<leader>dc",
+			"<leader>dr",
 			function()
 				require("dap").continue()
 			end,
-			{ desc = "DAP continue" },
+			{ desc = "Start or continue the DAP" },
+		},
+		{
+			"<F10>",
+			function()
+				require("dap").step_over()
+			end,
+			{ desc = "DAP step over" },
+		},
+		{
+			"<F11>",
+			function()
+				require("dap").step_into()
+			end,
+			{ desc = "DAP step into" },
+		},
+		{
+			"<F12>",
+			function()
+				require("dap").step_out()
+			end,
+			{ desc = "DAP step out" },
 		},
 	},
 	config = function()

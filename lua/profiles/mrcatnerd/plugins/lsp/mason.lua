@@ -18,7 +18,7 @@ return {
 			"rust-analyzer",
 			"stylua",
 			"glsl_analyzer",
-			-- "cpptools",
+			"codelldb",
 			-- "asm-lsp",
 		}, -- not an option from mason.nvim (shamelessly stolen from nvchad)
 

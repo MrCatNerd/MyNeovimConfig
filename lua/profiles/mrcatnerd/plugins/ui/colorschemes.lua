@@ -71,19 +71,5 @@ return {
 			})
 		end,
 	},
-	{
-		"HoNamDuong/hybrid.nvim",
-		name = "hybrid",
-		opts = {
-			terminal_colors = false,
-			strikethrough = true,
-			bold = true,
-			inverse = true,
-			transparent = true,
-		},
-		config = function(_, opts)
-			require("hybrid").setup(opts)
-		end,
-		priority = 1000,
-	},
+	{ "sainnhe/gruvbox-material", priority = 1000, config = true, opts = ... },
 }
