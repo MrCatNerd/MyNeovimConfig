@@ -2,9 +2,9 @@ function ColorMyPencils(color)
 	-- color = color or "catppuccin-frappe"
 	-- color = color or "catppuccin-mocha"
 	-- color = color or "rose-pine-moon"
-	-- color = color or "rose-pine"
+	color = color or "rose-pine"
 	-- color = color or "fluoromachine"
-	color = color or "gruvbox-material"
+	-- color = color or "gruvbox-material"
 
 	vim.cmd.colorscheme(color)
 

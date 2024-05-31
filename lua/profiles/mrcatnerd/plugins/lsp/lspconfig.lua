@@ -21,14 +21,6 @@ return {
 			vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, opts, { desc = "Go to next error (down)" })
 			vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, opts, { desc = "Go to previous error (up)" })
 			vim.keymap.set("n", "<leader>vdl", "<cmd>Telescope diagnostics<CR>", opts, { desc = "Diagnostics list" })
-
-			if server.name == "sqlls" then
-				vim.cmd([[
-                let g:LanguageClient_serverCommands = {
-                    \ 'sql': ['sql-language-server', 'up', '--method', 'stdio'],
-                    \ }
-                    ]])
-			end
 		end
 
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -61,7 +53,7 @@ return {
 			end,
 		}
 
-		local servers = { "pyright", "tsserver", "gopls", "glsl_analyzer", "cmake", "sqlls", "asm_lsp" } -- the servers in this list will be configured just enough to work
+		local servers = { "pyright", "tsserver", "gopls", "glsl_analyzer", "cmake", "asm_lsp" } -- the servers in this list will be configured just enough to work
 
 		-- glsl_analyzer requires some extra setup cuz they are not on mason yet
 		-- https://github.com/nolanderc/glsl_analyzer?tab=readme-ov-file#installation

@@ -81,5 +81,12 @@ return {
 				},
 			}),
 		})
+
+		cmp.setup.filetype({ "db", "sql", "mysql", "plsql", "sqlite3" }, {
+			sources = {
+				{ name = "vim_dadbod_completion" },
+				{ name = "buffer" },
+			},
+		})
 	end,
 }

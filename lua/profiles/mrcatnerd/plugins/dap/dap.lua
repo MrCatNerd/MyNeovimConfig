@@ -29,9 +29,7 @@ return {
 		},
 		{
 			"<F10>",
-			function()
-				require("dap").step_over()
-			end,
+			function() end,
 			{ desc = "DAP step over" },
 		},
 		{

@@ -46,7 +46,7 @@ return {
 			pattern = "NeogitPushComplete",
 			group = group,
 			callback = function()
-				require("notify").notify("Your code is now destoryed!", "info")
+				require("notify").notify("Git push just destroyed your code!", "info")
 			end,
 		})
 	end,
