@@ -3,11 +3,11 @@ return {
 	keys = {
 		{
 			"<leader>ft",
-			"<cmd>TroubleToggle workspace_diagnostics<CR>",
+			"<cmd>Trouble diagnostics toggle<CR>",
 			desc = "Toggles trouble worksapce diagnostics",
 		},
-		{ "<leader>fq", "<cmd>TroubleToggle quickfix<CR>", desc = "Toggles trouble quickfix list" },
-		{ "gR", "<cmd>TroubleToggle lsp_references<CR>", desc = "Toggles trouble lsp references" },
+		{ "<leader>fq", "<cmd>Trouble quickfix toggle<CR>", desc = "Toggles trouble quickfix list" },
+		{ "gR", "<cmd>Trouble lsp_references toggle<CR>", desc = "Toggles trouble lsp references" },
 	},
 	cmd = {
 		"Trouble",
