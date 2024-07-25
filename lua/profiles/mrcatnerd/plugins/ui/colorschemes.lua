@@ -1,6 +1,10 @@
 return {
 	-- colorschemes
 	{
+		"samharju/synthweave.nvim",
+	},
+	-- run :colorscheme synthweave or synthweave-transparent when feeling like it
+	{
 		"catppuccin/nvim",
 		name = "catppuccin",
 		priority = 1000,

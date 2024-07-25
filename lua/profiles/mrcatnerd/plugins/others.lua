@@ -66,7 +66,7 @@ return {
 	{
 		"MrCatNerd/temp.nvim",
 		dependencies = "nvim-lua/plenary.nvim",
-		keys = { -- best thing ever
+		keys = {
 			{ "<leader>www", "<cmd>TempToggleMenu<CR>", desc = "Toggles temp.nvim menu" },
 		},
 		cmd = "TempToggleMenu",
@@ -74,7 +74,7 @@ return {
 
 	{
 		"folke/persistence.nvim",
-		event = "BufReadPost", -- this will only start session saving when an actual file was opened
+		event = "BufReadPost", -- only start the plugin when opening a file
 		opts = {
 			-- add any custom options here
 		},

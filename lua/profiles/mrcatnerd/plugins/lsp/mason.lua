@@ -7,6 +7,7 @@ return {
 			-- "csharp-language-server",
 			-- "bash-language-server",
 			-- "biome",
+			"jdtls",
 			"gdtoolkit",
 			"typescript-language-server",
 			"black",
@@ -19,6 +20,7 @@ return {
 			"stylua",
 			"glsl_analyzer",
 			"codelldb",
+			"java-language-server",
 			-- "asm-lsp",
 		}, -- not an option from mason.nvim (shamelessly stolen from nvchad)
 

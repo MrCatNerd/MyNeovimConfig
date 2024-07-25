@@ -44,7 +44,6 @@ return {
 			},
 		}
 
-		-- TODO: make this small sample work instead of last time that i went all in and failed....
 		local default_table = {
 			on_attach = on_attach,
 			capabilities = capabilities,
@@ -53,15 +52,18 @@ return {
 			end,
 		}
 
-		local servers = { "pyright", "tsserver", "gopls", "glsl_analyzer", "cmake", "asm_lsp" } -- the servers in this list will be configured just enough to work
+		-- the servers in this list will be configured with a default config
+		local servers = { "pyright", "tsserver", "gopls", "glsl_analyzer", "cmake", "asm_lsp" }
 
-		-- glsl_analyzer requires some extra setup cuz they are not on mason yet
-		-- https://github.com/nolanderc/glsl_analyzer?tab=readme-ov-file#installation
-
-		-- loop through the servers and set up defaul config with vim.merge_tbl thing
+		-- loop through the servers and set up default config with vim.merge_tbl thing
 		for _, server in ipairs(servers) do
 			lspconfig[server].setup(vim.tbl_extend("force", default_table, {}))
 		end
+
+		lspconfig.jdtls.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+		})
 
 		lspconfig.gdscript.setup({
 			on_attach = on_attach,

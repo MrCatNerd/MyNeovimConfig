@@ -18,7 +18,7 @@ Should work on windows with a little bit of configuration cuz welcome to windows
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [CMake](https://cmake.org) / [Make](https://github.com/mirror/make)
 
-**you might need different dependencies for you LSP servers**
+**you might need different dependencies for your LSP servers**
 
 ## Installing
 
@@ -42,4 +42,3 @@ nvim --headless "+MasonInstallAll" +qa
 - DAP
 - add sql support
 - add a better windows installation guide based on the kickstart.nvim guide cuz its a good windows installation guide
-- maybe screenshots
