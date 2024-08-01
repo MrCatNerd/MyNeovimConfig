@@ -74,3 +74,7 @@ vim.opt.shortmess:append("sI")
 -- binaries installed by mason.nvim to PATH
 local is_windows = vim.fn.has("win32") ~= 0
 vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin" .. (is_windows and ";" or ":") .. vim.env.PATH
+
+-- too lazy to translate to lua
+vim.cmd("aunmenu PopUp.How-to\\ disable\\ mouse")
+vim.cmd("aunmenu PopUp.-1-")

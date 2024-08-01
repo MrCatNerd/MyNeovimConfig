@@ -18,9 +18,21 @@ return {
 			vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts, { desc = "Goto implementation" })
 
 			vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts, { desc = "goto type definition" })
-			vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, opts, { desc = "Go to next error (down)" })
-			vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, opts, { desc = "Go to previous error (up)" })
-			vim.keymap.set("n", "<leader>vdl", "<cmd>Telescope diagnostics<CR>", opts, { desc = "Diagnostics list" })
+			vim.keymap.set(
+				"n",
+				"<leader>dj",
+				"<cmd>lua vim.diagnostic.goto_next()<CR>zz",
+				opts,
+				{ desc = "Go to next error (down)" }
+			)
+			vim.keymap.set(
+				"n",
+				"<leader>dk",
+				"<cmd>lua vim.diagnostic.goto_prev()<CR>zz",
+				opts,
+				{ desc = "Go to previous error (up)" }
+			)
+			vim.keymap.set("n", "<leader>vdl", "<cmd>Telescope diagnostics<CR>zz", opts, { desc = "Diagnostics list" })
 		end
 
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
