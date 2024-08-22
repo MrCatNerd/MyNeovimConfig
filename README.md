@@ -24,7 +24,7 @@ Should work on windows with a little bit of configuration cuz welcome to windows
 
 ```sh
 git clone "https://github.com/MrCatNerd/MyNeovimConfig.git" "$HOME/.config/nvim" # Linux
-# git clone "https://github.com/MrCatNerd/MyNeovimConfig.git" "$LOCALAPPDATA/nvim" # Windows
+#git clone "https://github.com/MrCatNerd/MyNeovimConfig.git" "$LOCALAPPDATA/nvim" # Windows
 
 nvim --headless "+Lazy! sync" "+Lazy! build all" +qa
 ```

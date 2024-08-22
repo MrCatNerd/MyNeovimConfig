@@ -21,6 +21,7 @@ return {
 			"glsl_analyzer",
 			"codelldb",
 			"java-language-server",
+			"marksman",
 			-- "asm-lsp",
 		}, -- not an option from mason.nvim (shamelessly stolen from nvchad)
 

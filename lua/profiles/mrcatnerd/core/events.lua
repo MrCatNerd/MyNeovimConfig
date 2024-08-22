@@ -24,6 +24,9 @@ vim.schedule(function()
 		end,
 	})
 
+	-- where should yall go?
 	vim.api.nvim_create_user_command("S2T", "%s/    /\\t/g", {}) -- space to tab
 	vim.api.nvim_create_user_command("T2S", "%s/\\t/    /g", {}) -- tab to space
+
+	-- 4 space gang rules!
 end)
