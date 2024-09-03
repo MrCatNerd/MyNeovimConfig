@@ -1,4 +1,4 @@
-local ls = require("luasnip")
+local ls = require "luasnip"
 
 local s = ls.s
 local sn = ls.sn
@@ -13,28 +13,22 @@ local i, t, c, f, d = ls.insert_node, ls.text_node, ls.choice_node, ls.function_
 
 ls.add_snippets(nil, {
     all = {
-        -- my snippets:
         ls.parser.parse_snippet("file", "$TM_FILENAME"),
 
-        -- my snippeets kinda:
+        s("stime", {
+            f(function()
+                return { os.date "%D - %H:%M" }
+            end, {}),
+        }),
 
-        -- we got other friendly-snippets
-        -- s("datime", {
-        --     f(function()
-        --         return { os.date("%D - %H:%M") }
-        --     end, {}),
-        -- }),
-        --
-        -- -- snippets i stole from the internet:
-        --
-        -- s(
-        --     "date",
-        --     f(function()
-        --         return { os.date("%Y-%m-%d") }
-        --     end, {})
-        -- --[[ f(function()
-        --         return { os.date("%D") }
-        --     end, {}) ]]
-        -- ),
+        s(
+            "sdate",
+            f(function()
+                return { os.date "%Y-%m-%d" }
+            end, {})
+            --[[ f(function()
+                return { os.date("%D") }
+            end, {}) ]]
+        ),
     },
 })
