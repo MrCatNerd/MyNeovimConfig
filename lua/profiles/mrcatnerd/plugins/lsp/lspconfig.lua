@@ -1,8 +1,6 @@
 return {
     "neovim/nvim-lspconfig",
-    init = function()
-        require("common.utils").lazy_load "nvim-lspconfig"
-    end,
+    init = function() require("common.utils").lazy_load "nvim-lspconfig" end,
     cmd = { "LspInfo", "LspLog", "LspStop", "LspStart", "LspRestart" },
     config = function()
         local lspconfig = require "lspconfig"
@@ -59,13 +57,11 @@ return {
         local default_table = {
             on_attach = on_attach,
             capabilities = capabilities,
-            root_dir = function()
-                return vim.fn.getcwd()
-            end,
+            root_dir = function() return vim.fn.getcwd() end,
         }
 
         -- the servers in this list will be configured with a default config
-        local servers = { "pyright", "tsserver", "gopls", "glsl_analyzer", "cmake", "asm_lsp", "marksman" }
+        local servers = { "pyright", "ts_ls", "gopls", "glsl_analyzer", "cmake", "asm_lsp", "marksman" }
 
         -- loop through the servers and set up default config with vim.merge_tbl thing
         for _, server in ipairs(servers) do
@@ -83,17 +79,13 @@ return {
             flags = {
                 debounce_text_changes = 150,
             },
-            root_dir = function()
-                return vim.fn.getcwd()
-            end,
+            root_dir = function() return vim.fn.getcwd() end,
         }
 
         lspconfig.lua_ls.setup {
             on_attach = on_attach,
             capabilities = capabilities,
-            root_dir = function()
-                return vim.fn.getcwd()
-            end,
+            root_dir = function() return vim.fn.getcwd() end,
 
             settings = {
                 Lua = {

@@ -45,6 +45,7 @@ return {
             "make",
             "markdown",
             "markdown_inline",
+            "nix",
             "python",
             "query",
             "rasi",
@@ -67,10 +68,8 @@ return {
         -- Recommendation: set to false if you don"t have `tree-sitter` CLI installed locally
         auto_install = false,
 
-        disable = { "c" }, -- c is broken rn
-
         highlight = {
-            enable = false,
+            enable = true,
             use_languagetree = true,
             indent = { enable = true },
             highlight = { enable = true },

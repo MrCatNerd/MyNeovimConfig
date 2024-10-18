@@ -12,6 +12,7 @@ return {
             "typescript-language-server",
             "black",
             "clangd",
+            "clang-format",
             "cmake-language-server",
             "gopls",
             "lua-language-server",
