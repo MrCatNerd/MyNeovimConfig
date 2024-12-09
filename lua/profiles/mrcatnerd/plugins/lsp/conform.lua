@@ -24,11 +24,11 @@ return {
             end,
         },
         formatters_by_ft = { -- bruh stop_after_first is annoying
-            lua = { "stylua" },
+            lua = { "stylua", lsp_format = "fallback" },
             python = { "black", "isort", lsp_format = "fallback", stop_after_first = true },
-            javascript = { { "biome", "prettierd", "prettier", lsp_format = "fallback", stop_after_first = true } },
-            typescript = { { "biome", "prettierd", "prettier", lsp_format = "fallback", stop_after_first = true } },
-            rust = { { "clippy", "rustfmt", lsp_format = "fallback", stop_after_first = true } },
+            javascript = { "biome", "prettierd", "prettier", lsp_format = "fallback", stop_after_first = true },
+            typescript = { "biome", "prettierd", "prettier", lsp_format = "fallback", stop_after_first = true },
+            rust = { "clippy", "rustfmt", lsp_format = "fallback", stop_after_first = true },
             cpp = { "clang_format", lsp_format = "fallback" },
             c = { "clang_format", lsp_format = "fallback" },
             bash = { "shfmt", lsp_format = "fallback" },
@@ -45,7 +45,7 @@ return {
     config = function(_, opts)
         require("conform").setup(opts)
 
-        -- FIXME: fix both ConformToggleFormat and CnformToggleFormatGlobal cuz they aren't working and im too lazy to do any troubleshooting
+        -- FIXME: fix both ConformToggleFormat and ConformToggleFormatGlobal cuz they aren't working and im too lazy to do any troubleshooting
         vim.api.nvim_create_user_command(
             "ConformToggleFormatGlobal",
             function(args) vim.g.disable_autoformat = not vim.g.disable_autoformat end,

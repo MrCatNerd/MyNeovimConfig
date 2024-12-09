@@ -25,6 +25,7 @@ return {
             "marksman",
             "asm-lsp",
             "asmfmt",
+            "mesonlsp",
         }, -- not an option from mason.nvim (shamelessly stolen from nvchad)
 
         ui = {
