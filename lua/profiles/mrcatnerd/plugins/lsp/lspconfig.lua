@@ -54,18 +54,19 @@ return {
             },
         }
 
-        local default_table = {
+        local default_lsp_config_table = {
             on_attach = on_attach,
             capabilities = capabilities,
             root_dir = function() return vim.fn.getcwd() end,
         }
 
         -- the servers in this list will be configured with a default config
-        local servers = { "pyright", "ts_ls", "gopls", "glsl_analyzer", "cmake", "asm_lsp", "marksman", "mesonlsp" }
+        local servers =
+            { "pyright", "ts_ls", "gopls", "glsl_analyzer", "cmake", "asm_lsp", "marksman", "mesonlsp", "biome" }
 
         -- loop through the servers and set up default config with vim.merge_tbl thing
         for _, server in ipairs(servers) do
-            lspconfig[server].setup(vim.tbl_extend("force", default_table, {}))
+            lspconfig[server].setup(vim.tbl_extend("force", default_lsp_config_table, {}))
         end
 
         lspconfig.jdtls.setup {
