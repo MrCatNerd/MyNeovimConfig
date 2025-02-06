@@ -1,31 +1,29 @@
 return {
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.5",
+    tag = "0.1.8",
     -- or
-    -- branch = "0.1.x",
+    -- branch ="0.1.x",
     cmd = "Telescope",
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-tree/nvim-web-devicons",
+
+        "nvim-treesitter/nvim-treesitter", -- for preview highlighting
+
         {
+            "nvim-telescope/telescope-fzf-native.nvim",
+            build = "make",
+            -- `cond` is a condition used to determine whether this plugin should be
+            -- installed and loaded.
+            cond = function() return vim.fn.executable "make" == 1 end,
+        },
+        --[[ {
             "nvim-telescope/telescope-fzf-native.nvim",
             build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build", -- cmake
             -- `cond` is a condition used to determine whether this plugin should be
             -- installed and loaded.
             cond = function() return vim.fn.executable "cmake" == 1 end,
-        },
-
-        "nvim-treesitter/nvim-treesitter", -- for preview highlighting
-
-        --[[ {
-			"nvim-telescope/telescope-fzf-native.nvim",
-			build = "make",
-			-- `cond` is a condition used to determine whether this plugin should be
-			-- installed and loaded.
-			cond = function()
-				return vim.fn.executable("make") == 1
-			end,
-		}, -- make ]]
+        }, ]]
     },
     -- extensions_list = { "themes", "terms", "fzf" },
     extensions = {
@@ -41,7 +39,6 @@ return {
             mappings = {
                 i = {
                     ["<C-a>"] = function() print "meow" end,
-                    ["q"] = function(...) require("telescope.actions").close(...) end,
                     ["<esc>"] = function(...) require("telescope.actions").close(...) end,
                 },
             },
@@ -74,7 +71,7 @@ return {
                 height = 0.80,
                 preview_cutoff = 120,
             },
-            file_ignore_patterns = { "node_modules", "__pycache__" },
+            file_ignore_patterns = { "node_modules", "__pycache__", ".git" },
             winblend = 0,
             color_devicons = true,
             set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
