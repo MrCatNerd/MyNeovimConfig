@@ -16,7 +16,9 @@ Should work on windows with a little bit of configuration cuz welcome to windows
 
 - [fzf](https://github.com/junegunn/fzf)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
-- [CMake](https://cmake.org) / [Make](https://github.com/mirror/make)
+- [Make](https://github.com/mirror/make)
+<!-- if you have cmake you probably have make installed too -->
+<!-- - [CMake](https://cmake.org) / [Make](https://github.com/mirror/make) -->
 
 **you might need different dependencies for your LSP servers**
 
