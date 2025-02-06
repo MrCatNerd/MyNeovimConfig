@@ -10,3 +10,6 @@ echo "------------------------"
 echo "nvim no config startup time thingy:"
 hyperfine "nvim -u NONE --headless +qa" --warmup 10 || true
 
+echo "------------------------"
+
+echo "im sure this benchmark is 100% accurate lol"
