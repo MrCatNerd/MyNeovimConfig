@@ -85,9 +85,9 @@ return {
             function() require("telescope.builtin").grep_string { search = vim.fn.input "Grep > " } end,
             desc = "projects search",
         },
-        { "<leader>pf", "<cmd>Telescope find_files<CR>", desc = "Telescope find files" },
-        { "<C-p>", "<cmd>Telescope git_files<CR>", desc = "Telescope git files" },
-        { "<leader>vh", "<cmd>Telescope help_tags<CR>", desc = "Telescope help tags (best thing ever)" },
+        { "<leader>pf", function() require("telescope.builtin").find_files() end, desc = "Telescope find files" },
+        { "<C-p>", function() require("telescope.builtin").git_files() end, desc = "Telescope git files" },
+        { "<leader>vh", function() require("telescope.builtin").help_tags() end, desc = "Telescope help tags (best thing ever)" },
         {
             "<leader>rr",
             function() require("telescope").extensions.refactoring.refactors() end,
@@ -96,7 +96,6 @@ return {
     },
     config = function(_, opts)
         local telescope = require "telescope"
-
         telescope.setup(opts)
 
         pcall(telescope.load_extension, "fzf")
