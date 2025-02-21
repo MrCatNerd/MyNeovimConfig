@@ -2,7 +2,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\" -- same as leader
 
 -- vim.keymap.set("n", "<leader>pv", vim.cmd.Vex, { desc = "Opens Netrw vsplitted" })
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Opens Netrw" })
+vim.keymap.set("n", "<leader>pv", vim.cmd.Explore, { desc = "Opens Netrw" })
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Moves selected line/s down with movement keys" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Moves selected line/s up with movement keys" })
@@ -34,10 +34,10 @@ vim.keymap.set("n", "<leader>fl", vim.lsp.buf.format, { desc = "Formats current 
 vim.keymap.set("n", "<leader>ff", "<cmd>ConformWrite<CR>", { desc = "Formats current file with Conform.nvim" }) -- formatter.nvim formatting (better in my opinion)
 
 vim.keymap.set(
-	"n",
-	"<leader>s",
-	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-	{ desc = "Find and replace only in current file (no LSP)" }
+    "n",
+    "<leader>s",
+    [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+    { desc = "Find and replace only in current file (no LSP)" }
 )
 
 vim.keymap.set("n", "<leader><leader>", "<cmd>so<CR>", { desc = "Source remap" })
@@ -57,26 +57,26 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Next location lis
 
 -- mostly on linux
 vim.keymap.set(
-	"n",
-	"<leader>xx",
-	"<cmd>!chmod +x %<CR>",
-	{ silent = true, desc = "Change execution permission to allow file execution" }
+    "n",
+    "<leader>xx",
+    "<cmd>!chmod +x %<CR>",
+    { silent = true, desc = "Change execution permission to allow file execution" }
 )
 
 -- macros and marks
 vim.keymap.set("n", "<leader>md", function() -- mark/s delete
-	local marks = vim.fn.input("clear marks: ") -- get marks
+    local marks = vim.fn.input "clear marks: " -- get marks
 
-	if marks == "!" then
-		vim.cmd(":silent delmarks!") -- clear all lowercase marks
-		return
-	end
+    if marks == "!" then
+        vim.cmd ":silent delmarks!" -- clear all lowercase marks
+        return
+    end
 
-	vim.cmd(string.format(":silent delmarks %s", marks)) -- clear mark/s
+    vim.cmd(string.format(":silent delmarks %s", marks)) -- clear mark/s
 end, { silent = true, desc = "Delte a mark or all lowercase marks" })
 
 vim.keymap.set("n", "<leader>mD", function() -- macro delete
-	local macro_key = vim.fn.input("clear macro key: ") -- get macro key
+    local macro_key = vim.fn.input "clear macro key: " -- get macro key
 
-	vim.cmd(string.format(":silent let @%s = ''", macro_key)) -- clear macro key
+    vim.cmd(string.format(":silent let @%s = ''", macro_key)) -- clear macro key
 end, { silent = true, desc = "Delete a macro" })

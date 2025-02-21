@@ -26,6 +26,7 @@ return {
             "asm-lsp",
             "asmfmt",
             "mesonlsp",
+            "zls",
         }, -- not an option from mason.nvim (shamelessly stolen from nvchad)
 
         ui = {
