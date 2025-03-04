@@ -37,10 +37,6 @@ To install all of the LSP servers, run:
 nvim --headless "+MasonInstallAll" +qa
 ```
 
-#### changing your colorscheme
-goto lua/profiles/mrcatnerd/plugins/ui/colors.lua and change it
-and than run :ColorMyPencils to update the cache thingy
-
 ---
 
 ## TODO:

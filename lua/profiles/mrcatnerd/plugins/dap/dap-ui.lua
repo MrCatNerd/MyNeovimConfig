@@ -4,13 +4,8 @@ return {
     keys = {
         {
             "<leader>dt",
-            function() require("dapui").toggle_breakpoint() end,
-            { desc = "DAP continue" },
-        },
-        {
-            "<leader>dr",
-            function() require("dapui").open { reset = true } end,
-            { desc = "DAP continue" },
+            function() require("dapui").toggle() end,
+            { desc = "DAP UI toggle ui" },
         },
     },
 
