@@ -1,8 +1,7 @@
-# Nvim
+# NVCat
 My neovim config
 
 Loads in ~22ms
-Should work on windows with a little bit of configuration cuz welcome to windows
 
 ---
 
@@ -42,5 +41,5 @@ nvim --headless "+MasonInstallAll" +qa
 ## TODO:
 
 - DAP
-- add sql support
-- add a better windows installation guide based on the kickstart.nvim guide cuz its a good windows installation guide
+- add sql support (follow teej's nvim-dbee tutorial)
+- add a windows installation guide based on the kickstart.nvim guide cuz its a good windows installation guide
