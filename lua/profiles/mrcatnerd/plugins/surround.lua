@@ -1,6 +1,6 @@
 return {
     "kylechui/nvim-surround",
-    version = "main", -- use `main` branch for the latest features
+    version = "*", -- use `main` branch for the latest features
     keys = {
         { "cs", desc = "Change surrounding" },
         { "ds", desc = "Delete surrounding" },
