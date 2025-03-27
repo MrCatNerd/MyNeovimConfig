@@ -1,8 +1,8 @@
 return {
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.8",
+    -- tag = "0.1.8",
     -- or
-    -- branch ="0.1.x",
+    branch = "0.1.x",
     cmd = "Telescope",
     dependencies = {
         "nvim-lua/plenary.nvim",
@@ -87,7 +87,11 @@ return {
         },
         { "<leader>pf", function() require("telescope.builtin").find_files() end, desc = "Telescope find files" },
         { "<C-p>", function() require("telescope.builtin").git_files() end, desc = "Telescope git files" },
-        { "<leader>vh", function() require("telescope.builtin").help_tags() end, desc = "Telescope help tags (best thing ever)" },
+        {
+            "<leader>vh",
+            function() require("telescope.builtin").help_tags() end,
+            desc = "Telescope help tags (best thing ever)",
+        },
         {
             "<leader>rr",
             function() require("telescope").extensions.refactoring.refactors() end,
