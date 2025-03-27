@@ -1,7 +1,9 @@
-# NVCat
+# NvCat
 My neovim config
 
-Loads in ~22ms
+Loads in ~22ms (i3 9100)
+
+<img src="stuff/screenshot.png" alt="NvCat screenshot">
 
 ---
 
