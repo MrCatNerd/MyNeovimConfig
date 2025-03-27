@@ -38,6 +38,14 @@ To install all of the LSP servers, run:
 nvim --headless "+MasonInstallAll" +qa
 ```
 
+### clang format
+if you want my clang format config, run this in your home or your project directory
+- home dir = global (local will override)
+- project dir = local ^
+```sh
+curl --silent "https://raw.githubusercontent.com/MrCatNerd/.dotfiles/refs/heads/main/linux/clangd/.clang-format" -o .clang-format
+```
+
 ---
 
 ## TODO:
