@@ -61,8 +61,19 @@ return {
         }
 
         -- the servers in this list will be configured with a default config
-        local servers =
-            { "zls", "pyright", "ts_ls", "gopls", "glsl_analyzer", "cmake", "asm_lsp", "marksman", "mesonlsp", "biome" }
+        local servers = {
+            "asm_lsp",
+            "biome",
+            "cmake",
+            "csharp-language-server",
+            "glsl_analyzer",
+            "gopls",
+            "marksman",
+            "mesonlsp",
+            "pyright",
+            "ts_ls",
+            "zls",
+        }
 
         -- loop through the servers and set up default config with vim.merge_tbl thing
         for _, server in ipairs(servers) do
