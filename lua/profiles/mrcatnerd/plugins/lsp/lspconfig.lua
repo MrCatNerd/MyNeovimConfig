@@ -65,7 +65,7 @@ return {
             "asm_lsp",
             "biome",
             "cmake",
-            "csharp-language-server",
+            "csharp_ls",
             "glsl_analyzer",
             "gopls",
             "marksman",
