@@ -5,7 +5,7 @@ return {
     config = function()
         local lspconfig = require "lspconfig"
 
-        local on_attach = function(server)
+        local on_attach = function(server, bufnr)
             local opts = { buffer = 0 }
 
             vim.keymap.set("n", "K", vim.lsp.buf.hover, opts, { desc = "Hover" })
@@ -70,7 +70,6 @@ return {
             "gopls",
             "marksman",
             "mesonlsp",
-            "pyright",
             "ts_ls",
             "zls",
         }
@@ -203,31 +202,30 @@ return {
             },
         }
 
-        --[[ lspconfig.pyright.setup({
-			on_attach = function(client)
-				client.server_capabilities.signetureHelpProvider = false
-				on_attach()
-			end,
-			capabilities = capabilities,
-			root_dir = function()
-				return vim.fn.getcwd()
-			end,
+        lspconfig.pyright.setup {
+            on_attach = function(client, bufnr)
+                client.server_capabilities.signatureHelpProvider = false
+                on_attach(client, bufnr)
+            end,
 
-			settings = {
-				python = {
-					analysis = {
-						typeCheckingMode = "normal",
-						useLibraryCodeForTypes = true,
-						autoSearchPaths = true,
-						autoImportCompletions = false,
-						reportMissingImports = true,
-						followImportForHints = true,
-						reportGeneralTypeIssues = true,
-						analyzeUnannotatedFunctions = true,
-						reportDeprecated = true,
-					},
-				},
-			},
-		}) ]]
+            capabilities = capabilities,
+            root_dir = function() return vim.fn.getcwd() end,
+
+            settings = {
+                python = {
+                    analysis = {
+                        typeCheckingMode = "normal",
+                        useLibraryCodeForTypes = true,
+                        autoSearchPaths = true,
+                        autoImportCompletions = false,
+                        reportMissingImports = true,
+                        followImportForHints = true,
+                        reportGeneralTypeIssues = true,
+                        analyzeUnannotatedFunctions = true,
+                        reportDeprecated = true,
+                    },
+                },
+            },
+        }
     end,
 }
