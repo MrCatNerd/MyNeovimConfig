@@ -1,97 +1,96 @@
--- A list of parser names
--- TODO: see if treesitter.install is the correct way
-local ensure_installed = {
-    "asm",
-    "bash",
-    "c",
-    "c_sharp",
-    "cmake",
-    "commonlisp",
-    "cpp",
-    "css",
-    "csv",
-    "diff",
-    "dockerfile",
-    "gdscript",
-    "gdshader",
-    "gitignore",
-    "glsl",
-    "go",
-    "hlsl",
-    "html",
-    "java",
-    "javascript",
-    "jsdoc",
-    "json",
-    "jsonc",
-    "kotlin",
-    "lua",
-    "luadoc",
-    "luap",
-    "make",
-    "markdown",
-    "markdown_inline",
-    "meson",
-    "nix",
-    "python",
-    "query",
-    "rasi",
-    "regex",
-    "rust",
-    "sql",
-    "tmux",
-    "toml",
-    "tsx",
-    "typescript",
-    "vim",
-    "vimdoc",
-    "yaml",
-}
-
 return {
     "nvim-treesitter/nvim-treesitter",
     branch = "main",
-    -- lazy = false,
     event = { "BufReadPost", "BufNewFile" },
-    -- cmd = {
-    --     "EditQuery",
-    --     "Inspect",
-    --     "InspectTree",
-    --     "TSBufDisable",
-    --     "TSBufEnable",
-    --     "TSDisable",
-    --     "TSEnable",
-    --     "TSInstall",
-    --     "TSModuleInfo",
-    --     "TSUpdate",
-    --     "TSUpdateSync",
-    -- },
+    cmd = {
+        "EditQuery",
+        "Inspect",
+        "InspectTree",
+        "TSInstall",
+        "TSInstallFromGrammar",
+        "TSUninstall",
+        "TSLog",
+    },
     build = ":TSUpdate",
     opts = {
         -- Directory to install parsers and queries to
         install_dir = vim.fn.stdpath "data" .. "/site",
 
-        -- TODO: check if these are still valid for 'master' branch
-        highlight = {
-            enable = true,
-            use_languagetree = true,
-            indent = { enable = true },
-            highlight = { enable = true },
-
-            additional_vim_regex_highlighting = false,
-
-            -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
-            disable = function(lang, buf)
-                local max_filesize = 100 * 1024 -- 100 KB
-                local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-                return ok and stats and stats.size > max_filesize
-            end,
+        -- A list of parser names
+        ensure_installed = {
+            "asm",
+            "bash",
+            "c",
+            "c_sharp",
+            "cmake",
+            "commonlisp",
+            "cpp",
+            "css",
+            "csv",
+            "diff",
+            "dockerfile",
+            "gdscript",
+            "gdshader",
+            "gitignore",
+            "glsl",
+            "go",
+            "hlsl",
+            "html",
+            "java",
+            "javascript",
+            "jsdoc",
+            "json",
+            "jsonc",
+            "kotlin",
+            "lua",
+            "luadoc",
+            "luap",
+            "make",
+            "markdown",
+            "markdown_inline",
+            "meson",
+            "nix",
+            "python",
+            "query",
+            "rasi",
+            "regex",
+            "rust",
+            "sql",
+            "tmux",
+            "toml",
+            "tsx",
+            "typescript",
+            "vim",
+            "vimdoc",
+            "yaml",
         },
     },
+    init = function()
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = { "<filetype>" },
+            callback = function()
+                if vim.treesitter.get_parser(nil, nil, { error = false }) then vim.treesitter.start() end
+            end,
+        })
+    end,
     config = function(_, opts)
-        local treesitter = require "nvim-treesitter"
-        treesitter.setup(opts)
-        treesitter.install(ensure_installed)
+        -- ensure_installed is no longer part of nvim-treesitter, so we must extract it manually.
+        local ensure_installed = opts.ensure_installed
+        opts.ensure_installed = nil
+
+        local nvim_treesitter = require "nvim-treesitter"
+        nvim_treesitter.setup(opts)
+        nvim_treesitter.install(ensure_installed):await(function(err)
+            if err then
+                vim.notify("Failed to install TreeSitter parsers: " .. err, vim.log.levels.WARN)
+                return
+            end
+            -- start treesitter for all possible buffers
+            -- not all buffers will be possible, so we will pcall this for best effort.
+            for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+                pcall(vim.treesitter.start, buf)
+            end
+        end)
     end,
     enabled = vim.fn.has "win32" == 0,
 }
