@@ -3,8 +3,6 @@ return {
     init = function() require("common.utils").lazy_load "nvim-lspconfig" end,
     cmd = { "LspInfo", "LspLog", "LspStop", "LspStart", "LspRestart" },
     config = function()
-        local lspconfig = require "lspconfig"
-
         local on_attach = function(server, bufnr)
             local opts = { buffer = 0 }
 
@@ -76,24 +74,24 @@ return {
 
         -- loop through the servers and set up default config with vim.merge_tbl thing
         for _, server in ipairs(servers) do
-            lspconfig[server].setup(vim.tbl_extend("force", default_lsp_config_table, {}))
+            vim.lsp.config(server, vim.tbl_extend("force", default_lsp_config_table, {}))
         end
 
-        lspconfig.jdtls.setup {
+        vim.lsp.config("jdtls", {
             on_attach = on_attach,
             capabilities = capabilities,
-        }
+        })
 
-        lspconfig.gdscript.setup {
+        vim.lsp.config("gdscript", {
             on_attach = on_attach,
             capabilities = capabilities,
             flags = {
                 debounce_text_changes = 150,
             },
             root_dir = function() return vim.fn.getcwd() end,
-        }
+        })
 
-        lspconfig.lua_ls.setup {
+        vim.lsp.config("lua_ls", {
             on_attach = on_attach,
             capabilities = capabilities,
             root_dir = function() return vim.fn.getcwd() end,
@@ -132,9 +130,9 @@ return {
                     },
                 },
             },
-        }
+        })
 
-        lspconfig.rust_analyzer.setup {
+        vim.lsp.config("rust_analyzer", {
             on_attach = on_attach,
             capabilities = capabilities,
             cmd = { "rustup", "run", "stable", "rust-analyzer" },
@@ -173,9 +171,9 @@ return {
                     },
                 },
             },
-        }
+        })
 
-        lspconfig.clangd.setup {
+        vim.lsp.config("clangd", {
             on_attach = function(client)
                 client.server_capabilities.signatureHelpProvider = false
                 on_attach()
@@ -200,9 +198,9 @@ return {
                     },
                 },
             },
-        }
+        })
 
-        lspconfig.pyright.setup {
+        vim.lsp.config("pyright", {
             on_attach = function(client, bufnr)
                 client.server_capabilities.signatureHelpProvider = false
                 on_attach(client, bufnr)
@@ -226,6 +224,6 @@ return {
                     },
                 },
             },
-        }
+        })
     end,
 }
