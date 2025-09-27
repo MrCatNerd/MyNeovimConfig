@@ -1,34 +1,41 @@
 return {
     "neovim/nvim-lspconfig",
-    init = function() require("common.utils").lazy_load "nvim-lspconfig" end,
+    -- init = function() require("common.utils").lazy_load "nvim-lspconfig" end,
+    event = "User FilePost",
     cmd = { "LspInfo", "LspLog", "LspStop", "LspStart", "LspRestart" },
     config = function()
+        if vim.lsp.config == nil then
+            vim.notify_once "neovim v0.11+ required for lsp!"
+            return
+        end
+
         local on_attach = function(server, bufnr)
-            local opts = { buffer = 0 }
+            vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0, desc = "Hover" })
+            vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0, desc = "Goto defenition" })
+            vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, { buffer = 0, desc = "Rename something" })
+            vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, { buffer = 0, desc = "Code actions" })
+            vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, { buffer = 0, desc = "References" })
+            vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = 0, desc = "Goto implementation" })
 
-            vim.keymap.set("n", "K", vim.lsp.buf.hover, opts, { desc = "Hover" })
-            vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts, { desc = "Goto defenition" })
-            vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts, { desc = "Rename something" })
-            vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts, { desc = "Code actions" })
-            vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, opts, { desc = "References" })
-            vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts, { desc = "Goto implementation" })
-
-            vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts, { desc = "goto type definition" })
+            vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { buffer = 0, desc = "goto type definition" })
             vim.keymap.set(
                 "n",
                 "<leader>dj",
                 "<cmd>lua vim.diagnostic.goto_next()<CR>zz",
-                opts,
-                { desc = "Go to next error (down)" }
+                { buffer = 0, desc = "Go to next error (down)" }
             )
             vim.keymap.set(
                 "n",
                 "<leader>dk",
                 "<cmd>lua vim.diagnostic.goto_prev()<CR>zz",
-                opts,
-                { desc = "Go to previous error (up)" }
+                { buffer = 0, desc = "Go to previous error (up)" }
             )
-            vim.keymap.set("n", "<leader>vdl", "<cmd>Telescope diagnostics<CR>zz", opts, { desc = "Diagnostics list" })
+            vim.keymap.set(
+                "n",
+                "<leader>vdl",
+                "<cmd>Telescope diagnostics<CR>zz",
+                { buffer = 0, desc = "Diagnostics list" }
+            )
         end
 
         local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -52,11 +59,12 @@ return {
             },
         }
 
-        local default_lsp_config_table = {
-            on_attach = on_attach,
-            capabilities = capabilities,
-            root_dir = function() return vim.fn.getcwd() end,
-        }
+        vim.api.nvim_create_autocmd("LspAttach", {
+            callback = function(args) on_attach(_, args.buf) end,
+        })
+
+        -- default config:
+        vim.lsp.config("*", { on_attach = on_attach, capabilities = capabilities })
 
         -- the servers in this list will be configured with a default config
         local servers = {
@@ -70,17 +78,10 @@ return {
             "mesonlsp",
             "ts_ls",
             "zls",
+            "sqls",
+            "jdtls",
         }
-
-        -- loop through the servers and set up default config with vim.merge_tbl thing
-        for _, server in ipairs(servers) do
-            vim.lsp.config(server, vim.tbl_extend("force", default_lsp_config_table, {}))
-        end
-
-        vim.lsp.config("jdtls", {
-            on_attach = on_attach,
-            capabilities = capabilities,
-        })
+        vim.lsp.enable(servers)
 
         vim.lsp.config("gdscript", {
             on_attach = on_attach,
@@ -88,14 +89,13 @@ return {
             flags = {
                 debounce_text_changes = 150,
             },
-            root_dir = function() return vim.fn.getcwd() end,
         })
+        vim.lsp.enable "gdscript"
 
         vim.lsp.config("lua_ls", {
             on_attach = on_attach,
             capabilities = capabilities,
-            root_dir = function() return vim.fn.getcwd() end,
-
+            filetypes = { "lua" },
             settings = {
                 Lua = {
                     useLibraryCodeForTypes = true,
@@ -120,9 +120,10 @@ return {
                         checkThirdParty = false,
                         userThirdParty = true,
                         library = {
-                            [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-                            [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
-                            [vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy"] = true,
+                            vim.fn.expand "$VIMRUNTIME/lua",
+                            vim.fn.stdpath "data" .. "/lazy/ui/nvchad_types",
+                            vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy",
+                            "${3rd}/luv/library",
                         },
                         maxPreload = 100000,
                         preloadFileSize = 10000,
@@ -131,6 +132,7 @@ return {
                 },
             },
         })
+        vim.lsp.enable "lua_ls"
 
         vim.lsp.config("rust_analyzer", {
             on_attach = on_attach,
@@ -172,6 +174,7 @@ return {
                 },
             },
         })
+        vim.lsp.enable "rust_analyzer"
 
         vim.lsp.config("clangd", {
             on_attach = function(client)
@@ -180,7 +183,6 @@ return {
             end,
             capabilities = capabilities,
             cmd = { "clangd", "--background-index" },
-            root_dir = function() return vim.fn.getcwd() end,
             filetypes = { "c", "cpp", "objc", "objcpp" },
             settings = {
                 clangd = {
@@ -199,6 +201,7 @@ return {
                 },
             },
         })
+        vim.lsp.enable "clangd"
 
         vim.lsp.config("pyright", {
             on_attach = function(client, bufnr)
@@ -207,7 +210,6 @@ return {
             end,
 
             capabilities = capabilities,
-            root_dir = function() return vim.fn.getcwd() end,
 
             settings = {
                 python = {
@@ -225,5 +227,6 @@ return {
                 },
             },
         })
+        vim.lsp.enable "pyright"
     end,
 }

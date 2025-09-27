@@ -27,6 +27,7 @@ return {
             "stylua",
             "typescript-language-server",
             "zls",
+            "sqls",
         }, -- not an option from mason.nvim (shamelessly stolen from nvchad)
 
         ui = {

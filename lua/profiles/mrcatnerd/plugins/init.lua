@@ -21,14 +21,14 @@ local plugins = { -- lazy is true by default (lua\\profiles\\mrcatnerd\\opts.lua
 
     require "profiles.mrcatnerd.plugins.surround",
     require "profiles.mrcatnerd.plugins.todocomments",
-	require("profiles.mrcatnerd.plugins.markdown"),
+    require "profiles.mrcatnerd.plugins.markdown",
 
     require "profiles.mrcatnerd.plugins.others",
 
     require "profiles.mrcatnerd.plugins.cloak",
     require "profiles.mrcatnerd.plugins.git",
     require "profiles.mrcatnerd.plugins.colorizer",
-    require "profiles.mrcatnerd.plugins.sql",
+    require "profiles.mrcatnerd.plugins.nvim-dbee",
 
     require "profiles.mrcatnerd.plugins.xtras",
     require "profiles.mrcatnerd.plugins.java",

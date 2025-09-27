@@ -79,6 +79,9 @@ vim.env.PATH = vim.fn.stdpath "data" .. "/mason/bin" .. (is_windows and ";" or "
 -- treesitter indentation
 vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 
+-- set the default border for all floating windows
+vim.opt.winborder = "none"
+
 -- too lazy to translate to lua
 vim.cmd "aunmenu PopUp.How-to\\ disable\\ mouse"
 vim.cmd "aunmenu PopUp.-1-"
