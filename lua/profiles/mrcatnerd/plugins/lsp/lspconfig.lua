@@ -69,7 +69,6 @@ return {
         -- the servers in this list will be configured with a default config
         local servers = {
             "asm_lsp",
-            "biome",
             "cmake",
             "csharp_ls",
             "glsl_analyzer",
@@ -82,6 +81,13 @@ return {
             "jdtls",
         }
         vim.lsp.enable(servers)
+
+        vim.lsp.config("biome", {
+            on_attach = on_attach,
+            capabilities = capabilities,
+            filetypes = { "json" },
+        })
+        vim.lsp.enable "biome"
 
         vim.lsp.config("gdscript", {
             on_attach = on_attach,
