@@ -5,7 +5,8 @@ return {
         "saadparwaiz1/cmp_luasnip",
         "hrsh7th/cmp-cmdline",
         "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-path",
+        -- "hrsh7th/cmp-path",
+        "https://codeberg.org/FelipeLema/cmp-async-path.git", -- hopefully it'll get merged into cmp-path one day
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-nvim-lua",
         require "profiles.mrcatnerd.plugins.lsp.nvim-luasnip",
@@ -47,7 +48,8 @@ return {
                 { name = "nvim_lsp", max_item_count = 30 },
                 { name = "luasnip", max_item_count = 5, option = { show_autosnippets = true } }, -- For luasnip users.
                 { name = "buffer", keyword_length = 3, max_item_count = 10 },
-                { name = "path", max_item_count = 15, keyword_length = 2 },
+                -- { name = "path", max_item_count = 15, keyword_length = 2 },
+                { name = "async_path", max_item_count = 15, keyword_length = 2 },
             },
 
             experimental = {
@@ -67,7 +69,8 @@ return {
         cmp.setup.cmdline(":", {
             mapping = cmp.mapping.preset.cmdline(),
             sources = cmp.config.sources({
-                { name = "path", keyword_length = 3, max_item_count = 15 },
+                -- { name = "path", keyword_length = 3, max_item_count = 15 },
+                { name = "async_path", max_item_count = 15, keyword_length = 2 },
             }, {
                 {
                     name = "cmdline",
