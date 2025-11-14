@@ -18,16 +18,17 @@ return {
             vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = 0, desc = "Goto implementation" })
 
             vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { buffer = 0, desc = "goto type definition" })
+            vim.diagnostic.config { jump = { float = true } }
             vim.keymap.set(
                 "n",
                 "<leader>dj",
-                "<cmd>lua vim.diagnostic.goto_next()<CR>zz",
+                "<cmd>lua vim.diagnostic.jump({count = 1})<CR>zz",
                 { buffer = 0, desc = "Go to next error (down)" }
             )
             vim.keymap.set(
                 "n",
                 "<leader>dk",
-                "<cmd>lua vim.diagnostic.goto_prev()<CR>zz",
+                "<cmd>lua vim.diagnostic.jump({count = -1})<CR>zz",
                 { buffer = 0, desc = "Go to previous error (up)" }
             )
             vim.keymap.set(
