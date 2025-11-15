@@ -1,5 +1,6 @@
 return {
     "nvim-treesitter/nvim-treesitter",
+    branch = "master", -- TODO: update to main branch once its default
     event = { "BufReadPost", "BufNewFile" },
     cmd = {
         "EditQuery",
