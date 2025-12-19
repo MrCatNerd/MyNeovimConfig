@@ -210,7 +210,7 @@ return {
         })
         vim.lsp.enable "clangd"
 
-        vim.lsp.config("pyright", {
+        vim.lsp.config("basedpyright", {
             on_attach = function(client, bufnr)
                 client.server_capabilities.signatureHelpProvider = false
                 on_attach(client, bufnr)
@@ -234,6 +234,6 @@ return {
                 },
             },
         })
-        vim.lsp.enable "pyright"
+        vim.lsp.enable "basedpyright"
     end,
 }

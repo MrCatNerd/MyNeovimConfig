@@ -22,7 +22,7 @@ return {
             "lua-language-server",
             "marksman",
             "mesonlsp",
-            "pyright",
+            "basedpyright",
             "rust-analyzer",
             "stylua",
             "typescript-language-server",
