@@ -210,8 +210,68 @@ return {
         })
         vim.lsp.enable "clangd"
 
-        -- TODO: look into ruff lsp (the non-deprecated one -> the one that should come with ruff)
-        -- might just be called vim.lsp.config("ruff", {...})
+        vim.lsp.config("ty", {
+            on_attach = function(client, bufnr)
+                client.server_capabilities.signatureHelpProvider = false
+                on_attach(client, bufnr)
+            end,
+
+            capabilities = capabilities,
+
+            settings = {
+                ty = {
+                    -- this config is supposed to be close to the pyright one below
+
+                    -- diagnostics behavior
+                    diagnosticMode = "workspace",
+                    showSyntaxErrors = true,
+
+                    -- completions
+                    completions = {
+                        autoImport = false,
+                    },
+
+                    -- inline hints (pyright-ish defaults)
+                    inlayHints = {
+                        variableTypes = true,
+                        callArgumentNames = true,
+                    },
+
+                    -- THIS is where pyright analysis flags map to ty
+                    configuration = {
+                        rules = {
+                            -- core type correctness
+                            ["invalid-assignment"] = "error",
+                            ["invalid-argument-type"] = "error",
+                            ["invalid-return-type"] = "error",
+                            ["unknown-argument"] = "error",
+
+                            -- imports and name resolution
+                            ["unresolved-import"] = "error",
+                            ["possibly-missing-import"] = "error",
+                            ["unresolved-reference"] = "error",
+                            ["possibly-unresolved-reference"] = "error",
+
+                            -- inheritance / class correctness
+                            ["override-of-final-method"] = "error",
+                            ["incompatible-method-override"] = "error",
+                            ["invalid-base-class"] = "error",
+
+                            -- lifecycle / hygiene
+                            ["deprecated"] = "warn",
+                            ["unused-ignore-comment"] = "warn",
+                            ["useless-overload-body"] = "warn",
+
+                            -- noise control
+                            ["division-by-zero"] = "warn",
+                        },
+                    },
+                },
+            },
+        })
+
+        vim.lsp.enable "ty"
+
         vim.lsp.config("basedpyright", {
             on_attach = function(client, bufnr)
                 client.server_capabilities.signatureHelpProvider = false
@@ -236,6 +296,7 @@ return {
                 },
             },
         })
-        vim.lsp.enable "basedpyright"
+        -- # pyright is disabled in favor of the ty type checker - saving the config if i need it in some specific project or smh
+        -- vim.lsp.enable "basedpyright"
     end,
 }
