@@ -8,7 +8,7 @@ return {
             "asmfmt",
             "bash-language-server",
             "biome",
-            "black",
+            "ruff",
             "clang-format",
             "clangd",
             "cmake-language-server",

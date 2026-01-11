@@ -210,6 +210,8 @@ return {
         })
         vim.lsp.enable "clangd"
 
+        -- TODO: look into ruff lsp (the non-deprecated one -> the one that should come with ruff)
+        -- might just be called vim.lsp.config("ruff", {...})
         vim.lsp.config("basedpyright", {
             on_attach = function(client, bufnr)
                 client.server_capabilities.signatureHelpProvider = false

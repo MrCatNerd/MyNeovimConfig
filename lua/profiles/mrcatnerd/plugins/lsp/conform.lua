@@ -3,9 +3,6 @@ return {
     cmd = { "ConformInfo", "ConformFormat", "ConformFormat", "ConformToggleFormatGlobal" },
     event = "BufWritePre",
 
-    -- This will provide type hinting with LuaLS
-    ---@module "conform"
-    ---@type conform.setupOpts
     opts = {
         notify_on_error = false,
         format_on_save = {
@@ -25,7 +22,7 @@ return {
         },
         formatters_by_ft = { -- bruh stop_after_first is annoying
             lua = { "stylua", lsp_format = "fallback" },
-            python = { "black", "isort", lsp_format = "fallback", stop_after_first = true },
+            python = { "ruff_format", lsp_format = "fallback", stop_after_first = true },
             javascript = { "biome", "prettierd", "prettier", lsp_format = "fallback", stop_after_first = true },
             typescript = { "biome", "prettierd", "prettier", lsp_format = "fallback", stop_after_first = true },
             rust = { "clippy", "rustfmt", lsp_format = "fallback", stop_after_first = true },
