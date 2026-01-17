@@ -194,7 +194,6 @@ return {
             settings = {
                 clangd = {
                     completeUnimported = true,
-                    -- fallbackFlags = {}, -- Remove this line or set it to nil if you want to use .clangd file flags
                     showOrigins = true,
                     useFallbackFlags = true,
                     trace = { server = "verbose" },
@@ -237,7 +236,7 @@ return {
                         callArgumentNames = true,
                     },
 
-                    -- THIS is where pyright analysis flags map to ty
+                    -- this is where pyright analysis flags map to ty
                     configuration = {
                         rules = {
                             -- core type correctness
@@ -269,7 +268,6 @@ return {
                 },
             },
         })
-
         vim.lsp.enable "ty"
 
         vim.lsp.config("basedpyright", {
