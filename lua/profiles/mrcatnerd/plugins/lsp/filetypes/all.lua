@@ -16,19 +16,12 @@ ls.add_snippets(nil, {
         ls.parser.parse_snippet("file", "$TM_FILENAME"),
 
         s("stime", {
-            f(function()
-                return { os.date "%D - %H:%M" }
-            end, {}),
+            f(function() return { os.date "%D - %H:%M" } end, {}),
         }),
 
-        s(
-            "sdate",
-            f(function()
-                return { os.date "%Y-%m-%d" }
-            end, {})
-            --[[ f(function()
+        s("sdate", f(function() return { os.date "%Y-%m-%d" } end, {})        --[[ f(function()
                 return { os.date("%D") }
             end, {}) ]]
-        ),
+),
     },
 })
