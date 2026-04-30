@@ -1,14 +1,8 @@
 return {
     "neovim/nvim-lspconfig",
-    -- init = function() require("common.utils").lazy_load "nvim-lspconfig" end,
     event = "User FilePost",
     cmd = { "LspInfo", "LspLog", "LspStop", "LspStart", "LspRestart" },
     config = function()
-        if vim.lsp.config == nil then
-            vim.notify_once "neovim v0.11+ required for lsp!"
-            return
-        end
-
         local on_attach = function(server, bufnr)
             vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0, desc = "Hover" })
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0, desc = "Goto defenition" })
