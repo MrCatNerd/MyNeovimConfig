@@ -13,7 +13,7 @@ return {
             "clangd",
             "cmake-language-server",
             "codelldb",
-            "csharp-language-server",
+            "csharp-language-server", -- TODO:use roslyn_ls instead
             "gdtoolkit",
             "glsl_analyzer",
             "gopls",
