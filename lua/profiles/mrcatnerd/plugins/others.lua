@@ -9,13 +9,6 @@ return {
             "SpOnGeBoBiFy",
         },
     },
-
-    {
-        "tikhomirov/vim-glsl",
-        ft = "glsl",
-        enabled = vim.fn.has "win32" ~= 0, -- because treesitter isnt working for windows
-    },
-
     {
         "numToStr/Comment.nvim",
         keys = {
