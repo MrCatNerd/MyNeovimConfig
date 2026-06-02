@@ -17,11 +17,12 @@ Loads in ~22ms (i3 9100)
 
 - [fzf](https://github.com/junegunn/fzf)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
-- [Make](https://github.com/mirror/make)
-<!-- if you have cmake you probably have make installed too -->
-<!-- - [CMake](https://cmake.org) / [Make](https://github.com/mirror/make) -->
+- [Make](https://savannah.gnu.org/projects/make/)
 
-**you might need different dependencies for your LSP servers**
+### Treesitter
+A `C` compiler e.g. [GCC](https://gcc.gnu.org/) | [ZIG](https://ziglang.org/) works too
+
+**you might need misc dependencies for your LSP servers**
 
 ## Installing
 
@@ -39,7 +40,7 @@ nvim --headless "+MasonInstallAll" +qa
 ```
 
 ### clang format
-if you want my clang format config, run this in your home or your project directory
+if you want my clang format config, fetch this file to your ~ or project dir
 - home dir = global (local will override)
 - project dir = local ^
 ```sh
@@ -50,6 +51,4 @@ curl --silent "https://raw.githubusercontent.com/MrCatNerd/.dotfiles/refs/heads/
 
 ## TODO:
 
-- DAP
-- add sql support (follow teej's nvim-dbee tutorial)
-- add a windows installation guide based on the kickstart.nvim guide cuz its a good windows installation guide
+- complete DAP

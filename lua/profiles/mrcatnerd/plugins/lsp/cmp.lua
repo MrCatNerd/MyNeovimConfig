@@ -6,7 +6,7 @@ return {
         "hrsh7th/cmp-cmdline",
         "hrsh7th/cmp-nvim-lsp",
         -- "hrsh7th/cmp-path",
-        "https://codeberg.org/FelipeLema/cmp-async-path.git", -- hopefully it'll get merged into cmp-path one day
+        "https://codeberg.org/FelipeLema/cmp-async-path.git", -- hopefully it'll get merged into cmp-path one day -_-
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-nvim-lua",
         require "profiles.mrcatnerd.plugins.lsp.nvim-luasnip",
