@@ -31,8 +31,7 @@ vim.opt.wrap = false
 vim.opt.autoread = false -- :help autoread
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv "HOME" -- works on linux as well i think
-    .. "/.vim/undodir" -- this won't work on normal (window) cmds, use powershell instead.
+vim.opt.undodir = vim.fn.stdpath "state" .. "/undodir"
 vim.opt.undofile = true
 
 if vim.fn.has "win32" ~= 0 then

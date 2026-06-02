@@ -32,7 +32,6 @@ local plugins = { -- lazy is true by default (lua\\profiles\\mrcatnerd\\opts.lua
 
     require "profiles.mrcatnerd.plugins.xtras",
     require "profiles.mrcatnerd.plugins.java",
-    require "profiles.mrcatnerd.plugins.terminal",
 }
 
 local opts = require "profiles.mrcatnerd.core.opts"

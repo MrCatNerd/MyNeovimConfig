@@ -1,21 +1,10 @@
 return {
     "nvim-treesitter/nvim-treesitter",
-    branch = "master", -- TODO: update to main branch once its default
+    branch = "main",
+    lazy = false,
     event = { "BufReadPost", "BufNewFile" },
-    cmd = {
-        "EditQuery",
-        "Inspect",
-        "InspectTree",
-        "TSBufDisable",
-        "TSBufEnable",
-        "TSDisable",
-        "TSEnable",
-        "TSInstall",
-        "TSModuleInfo",
-        "TSUpdate",
-        "TSUpdateSync",
-    },
-    build = ":TSUpdate",
+    cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+    build = ":TSUpdate | TSInstallAll",
     opts = {
         -- A list of parser names, or "all" (the five listed parsers should always be installed)
         ensure_installed = {
@@ -65,30 +54,22 @@ return {
             "vimdoc",
             "yaml",
         },
-
-        -- Install parsers synchronously (only applied to `ensure_installed`)
-        sync_install = false,
-
-        -- Automatically install missing parsers when entering buffer
-        -- Recommendation: set to false if you don"t have `tree-sitter` CLI installed locally
-        auto_install = false,
-
-        highlight = {
-            enable = true,
-            use_languagetree = true,
-            indent = { enable = true },
-            highlight = { enable = true },
-
-            additional_vim_regex_highlighting = false,
-
-            -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
-            disable = function(lang, buf)
-                local max_filesize = 100 * 1024 -- 100 KB
-                local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-                return ok and stats and stats.size > max_filesize
-            end,
-        },
+        -- TODO: disable treesitter on files > 100KB
     },
-    config = function(_, opts) require("nvim-treesitter.configs").setup(opts) end,
-    enabled = vim.fn.has "win32" == 0,
+    config = function(_, opts)
+        require("nvim-treesitter").setup { opts }
+
+        vim.api.nvim_create_user_command("TSInstallAll", function()
+            -- if I wanna go the lazy loading route
+            -- local spec = require("lazy.core.config").plugins["nvim-treesitter"]
+            -- local opts = type(spec.opts) == "table" and spec.opts or {}
+
+            require("nvim-treesitter").install(opts.ensure_installed)
+        end, {})
+
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = "*",
+            callback = function() pcall(vim.treesitter.start) end,
+        })
+    end,
 }
