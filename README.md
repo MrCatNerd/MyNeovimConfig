@@ -21,6 +21,7 @@ Loads in ~22ms (i3 9100)
 
 ### Treesitter
 A `C` compiler e.g. [GCC](https://gcc.gnu.org/) | [ZIG](https://ziglang.org/) works too
+also might require tree-sitter-cli
 
 **you might need misc dependencies for your LSP servers**
 
