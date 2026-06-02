@@ -39,30 +39,6 @@ return {
 
     -- stupid stuff / maliciousness / other
     { "ThePrimeagen/vim-be-good", cmd = "VimBeGood" },
-
-    --[[ {
-        -- "MrCatNerd/temp.nvim",
-        "temp.nvim",
-        dev = true,
-        dependencies = "nvim-lua/plenary.nvim",
-        keys = { -- best thing ever
-            { "<leader>www", "<cmd>TempToggle<CR>", desc = "Toggles temp.nvim menu" },
-        },
-        cmd = { "TempToggle", "DBG" },
-        config = function()
-            require("temp").setup()
-        end,
-    }, ]]
-
-    {
-        "MrCatNerd/temp.nvim",
-        dependencies = "nvim-lua/plenary.nvim",
-        keys = {
-            { "<leader>www", "<cmd>TempToggleMenu<CR>", desc = "Toggles temp.nvim menu" },
-        },
-        cmd = "TempToggleMenu",
-    },
-
     {
         "folke/persistence.nvim",
         event = "BufReadPost", -- only start the plugin when opening a file
