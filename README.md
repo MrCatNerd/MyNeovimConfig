@@ -12,9 +12,6 @@ Loads in ~22ms (i3 9100)
 - [neovim](https://neovim.io)
 - [git](https://git-scm.com)
 - [Nerd Font](https://www.nerdfonts.com)
-
-### Telescope.nvim
-
 - [fzf](https://github.com/junegunn/fzf)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [Make](https://savannah.gnu.org/projects/make/)
@@ -45,7 +42,7 @@ if you want my clang format config, fetch this file to your ~ or project dir
 - home dir = global (local will override)
 - project dir = local ^
 ```sh
-curl --silent "https://raw.githubusercontent.com/MrCatNerd/.dotfiles/refs/heads/main/linux/clangd/.clang-format" -o .clang-format
+curl -so ".clang-format" "https://raw.githubusercontent.com/MrCatNerd/.dotfiles/refs/heads/main/linux/clangd/.clang-format"
 ```
 
 ---
@@ -53,3 +50,4 @@ curl --silent "https://raw.githubusercontent.com/MrCatNerd/.dotfiles/refs/heads/
 ## TODO:
 
 - complete DAP
+- fix my java mess
