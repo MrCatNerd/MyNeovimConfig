@@ -68,12 +68,12 @@ return {
             "csharp_ls",
             "glsl_analyzer",
             "gopls",
+            "jdtls",
             "marksman",
             "mesonlsp",
+            "sqls",
             "ts_ls",
             "zls",
-            "sqls",
-            "jdtls",
         }
         vim.lsp.enable(servers)
 

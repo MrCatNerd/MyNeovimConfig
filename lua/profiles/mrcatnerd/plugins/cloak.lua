@@ -1,6 +1,6 @@
 return {
     "https://github.com/laytan/cloak.nvim",
-    event = "BufRead *.env*",
+    ft = "env",
     cmd = {
         "CloakDisable",
         "CloakEnable",

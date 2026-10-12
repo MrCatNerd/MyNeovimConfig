@@ -31,6 +31,7 @@ return {
             bash = { "shfmt", lsp_format = "fallback" },
             csharp = { "clang_format", lsp_format = "fallback" },
             json = { "biome", lsp_format = "fallback" },
+            java = { "jdtls", lsp_format = "fallback" },
             asm = { "asmfmt", lsp_format = "fallback" },
             gdscript = { "gdtoolkit", lsp_format = "fallback" },
             _ = { "trim_whitespace" }, -- Apply to all filetypes
